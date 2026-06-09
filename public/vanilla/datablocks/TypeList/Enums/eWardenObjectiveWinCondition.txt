@@ -1,0 +1,2 @@
+GoToElevator - 0
+GoToExitGeo - 1

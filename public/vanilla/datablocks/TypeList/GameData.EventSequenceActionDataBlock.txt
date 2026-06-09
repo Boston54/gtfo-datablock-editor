@@ -1,0 +1,26 @@
+ESA_Sound: Sound
+   Boolean: On
+   UInt32: SoundID
+ESA_PostEffect: PostEffect
+   Boolean: On
+   Single: ValueA
+   Single: ValueB
+   Single: ValueC
+   String: ValueD
+ESA_FogSettings: FogSettings
+   Boolean: On
+   Single: ValueA
+   String: ValueB
+   String: ValueC
+ESA_EnemyWave: EnemyWave
+   Boolean: On
+   Single: ValueA
+   Single: ValueB
+   Single: ValueC
+ESA_Lights: Lights
+   Boolean: On
+   (LightSettingsDataBlock) UInt32: LightSettingsID
+   (enum) eESALightsEffectScope: Scope
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

@@ -1,0 +1,9 @@
+List<EnemyRoleData>: RoleDatas
+   (enum) eEnemyRole: Role
+   (enum) eEnemyRoleDifficulty: Difficulty
+   (EnemyDataBlock) UInt32: Enemy
+   Single: Cost
+   Single: Weight
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

@@ -1,0 +1,9 @@
+Single: range
+Single: angle
+Single: intensity
+String: cookie
+Color: color
+(enum) AssetBundleShard: startupShard
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

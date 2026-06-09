@@ -1,0 +1,32 @@
+HealthData: Health
+   Single: HealthMax
+   Single: DamageUntilHitreact
+   Single: BodypartHealth
+   Single: WeakspotDamageMulti
+   Single: ArmorDamageMulti
+   (enum) ES_HitreactType: HitreactOnLimbDestruction
+   Boolean: TryForceHitreactOnLimbDestruction
+Single: GlueTolerance
+Single: GlueFadeOutTime
+Boolean: CanBePushed
+Boolean: ForbidTwitchHit
+Boolean: AllowDamgeBonusFromBehind
+Boolean: UseTentacleTunnelCheck
+Boolean: UseVisibilityRaycastDuringTentacleAttack
+Single: TentacleAttackDamageRadiusIfNoTunnelCheck
+Single: TentacleAttackDamage
+Single: MeleeAttackDamage
+Single: MeleeAttackDamageCheckRadius
+Single: TagTime
+Single: EnemyCollisionRadius
+Single: EnemyCollisionPlayerMovementReduction
+Single: EnemyCollisionMinimumMoveSpeedModifier
+Single: ScoutTentaclesMoveOutMultiplier
+Single: ScoutTentaclesMoveInTime
+Single: ScoutTentaclesMoveInDetectedTime
+Single: ScoutTentacleSourceExpansionOffset
+Vector2: ScoutTentacleAngleMinMax
+Int32: ScoutTentacleCount
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

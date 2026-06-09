@@ -1,0 +1,8 @@
+(EnemyDataBlock) UInt32: WaveRoleWeakling
+(EnemyDataBlock) UInt32: WaveRoleStandard
+(EnemyDataBlock) UInt32: WaveRoleSpecial
+(EnemyDataBlock) UInt32: WaveRoleMiniBoss
+(EnemyDataBlock) UInt32: WaveRoleBoss
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

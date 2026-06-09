@@ -1,0 +1,6 @@
+String: Decal
+(enum) AssetBundleName: AssetBundleName
+(enum) AssetBundleShard: AssetBundleShard
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

@@ -1,0 +1,4 @@
+String: Description
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

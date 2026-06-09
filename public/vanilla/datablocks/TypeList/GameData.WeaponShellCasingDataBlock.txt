@@ -1,0 +1,4 @@
+(enum) ShellTypes: ShellCasingType
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

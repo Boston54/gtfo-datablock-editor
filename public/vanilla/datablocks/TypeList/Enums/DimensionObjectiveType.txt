@@ -1,0 +1,3 @@
+Ignore - 0
+LinkedToLayer - 1
+Independent - 2

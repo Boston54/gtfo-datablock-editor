@@ -1,0 +1,4 @@
+None - 0
+SessionSeed - 1
+BuildSeed - 2
+StaticSeed - 3

@@ -1,0 +1,938 @@
+Int32: ZoneAliasStart
+List<ExpeditionZoneData>: Zones
+   (enum) eLocalZoneIndex: LocalIndex
+   Int32: AliasOverride
+   Boolean: OverrideAliasPrefix
+   String: AliasPrefixOverride
+   String: AliasPrefixShortOverride
+   Int32: SubSeed
+   Int32: MarkerSubSeed
+   Int32: LightsSubSeed
+   Int32: BulkheadDCScanSeed
+   (enum) SubComplex: SubComplex
+   String: CustomGeomorph
+   Boolean: IgnoreRandomGeomorphRotation
+   Vector2: CoverageMinMax
+   (enum) eLocalZoneIndex: BuildFromLocalIndex
+   (enum) eZoneBuildFromType: StartPosition
+   Single: StartPosition_IndexWeight
+   (enum) eZoneBuildFromExpansionType: StartExpansion
+   (enum) eZoneExpansionType: ZoneExpansion
+   (LightSettingsDataBlock) UInt32: LightSettings
+   AltitudeData: AltitudeData
+      (enum) eWantedZoneHeighs: AllowedZoneAltitude
+      Single: ChanceToChange
+   List<LevelEventData>: EventsOnEnter
+      Single: Delay
+      LevelEventNoiseData: Noise
+         Boolean: Enabled
+         Single: RadiusMin
+         Single: RadiusMax
+      LevelEventWardenIntelData: Intel
+         Boolean: Enabled
+         String: IntelMessage
+      LevelEventSoundData: Sound
+         Boolean: Enabled
+         UInt32: SoundEvent
+   List<WardenObjectiveEventData>: EventsOnPortalWarp
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   List<WardenObjectiveEventData>: EventsOnApproachDoor
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   List<WardenObjectiveEventData>: EventsOnUnlockDoor
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   List<WardenObjectiveEventData>: EventsOnOpenDoor
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   List<WardenObjectiveEventData>: EventsOnDoorScanStart
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   List<WardenObjectiveEventData>: EventsOnDoorScanDone
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   List<WardenObjectiveEventData>: EventsOnBossDeath
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   List<WorldEventFromSourceData>: EventsOnTrigger
+      String: WorldEventTriggerObjectFilter
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   ProgressionPuzzleData: ProgressionPuzzleToEnter
+      (enum) eProgressionPuzzleType: PuzzleType
+      LocalizedText: CustomText
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      Int32: PlacementCount
+      List<ZonePlacementData>: ZonePlacementData
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+   (ChainedPuzzleDataBlock) UInt32: ChainedPuzzleToEnter
+   Boolean: IsCheckpointDoor
+   Boolean: PlayScannerVoiceAudio
+   Boolean: SkipAutomaticProgressionObjective
+   (enum) eSecurityGateType: SecurityGateToEnter
+   Boolean: UseStaticBioscanPointsInZone
+   Boolean: TurnOffAlarmOnTerminal
+   TerminalZoneSelectionData: TerminalPuzzleZone
+      (enum) eLocalZoneIndex: LocalIndex
+      (enum) eSeedType: SeedType
+      Int32: TerminalIndex
+      Int32: StaticSeed
+   List<WardenObjectiveEventData>: EventsOnTerminalDeactivateAlarm
+      (enum) eWardenObjectiveEventType: Type
+      WorldEventConditionPair: Condition
+         Int32: ConditionIndex
+         Boolean: IsTrue
+      (enum) eWardenObjectiveEventTrigger: Trigger
+      (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+      Boolean: UseStaticBioscanPoints
+      (enum) LG_LayerType: Layer
+      (enum) eDimensionIndex: DimensionIndex
+      (enum) eLocalZoneIndex: LocalIndex
+      Single: Delay
+      Single: Duration
+      Boolean: ClearDimension
+      LocalizedText: WardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjectiveHeader
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: CustomSubObjective
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      UInt32: SoundID
+      LocalizedText: SoundSubtitle
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      (PlayerDialogDataBlock) UInt32: DialogueID
+      (FogSettingsDataBlock) UInt32: FogSetting
+      Single: FogTransitionDuration
+      GenericEnemyWaveData: EnemyWaveData
+         (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+         (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+         Int32: AreaDistance
+         String: WorldEventObjectFilterSpawnPoint
+         Single: SpawnDelay
+         Boolean: TriggerAlarm
+         LocalizedText: IntelMessage
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+      UInt32: EnemyID
+      Vector3: Position
+      Int32: Count
+      Boolean: Enabled
+      (enum) TERM_Command: TerminalCommand
+      (enum) TERM_CommandRule: TerminalCommandRule
+      String: AchievementKey
+      Int32: SustainedEventSlotIndex
+      Int32: SustainedEventStateCount
+      Single: SustainedEventStateDuration
+      Single: SustainedEventDelay
+      String: WorldEventObjectFilter
+   ActiveEnemyWaveData: ActiveEnemyWave
+      Boolean: HasActiveEnemyWave
+      (EnemyGroupDataBlock) UInt32: EnemyGroupInfrontOfDoor
+      (EnemyGroupDataBlock) UInt32: EnemyGroupInArea
+      Int32: EnemyGroupsInArea
+   List<SpecificChainPuzzleSpawnData>: WorldEventChainedPuzzleDatas
+      (ChainedPuzzleDataBlock) UInt32: ChainedPuzzle
+      String: WorldEventObjectFilter
+      List<WardenObjectiveEventData>: EventsOnScanDone
+         (enum) eWardenObjectiveEventType: Type
+         WorldEventConditionPair: Condition
+            Int32: ConditionIndex
+            Boolean: IsTrue
+         (enum) eWardenObjectiveEventTrigger: Trigger
+         (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+         Boolean: UseStaticBioscanPoints
+         (enum) LG_LayerType: Layer
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         Single: Delay
+         Single: Duration
+         Boolean: ClearDimension
+         LocalizedText: WardenIntel
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         LocalizedText: CustomSubObjectiveHeader
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         LocalizedText: CustomSubObjective
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         UInt32: SoundID
+         LocalizedText: SoundSubtitle
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         (PlayerDialogDataBlock) UInt32: DialogueID
+         (FogSettingsDataBlock) UInt32: FogSetting
+         Single: FogTransitionDuration
+         GenericEnemyWaveData: EnemyWaveData
+            (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+            (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+            Int32: AreaDistance
+            String: WorldEventObjectFilterSpawnPoint
+            Single: SpawnDelay
+            Boolean: TriggerAlarm
+            LocalizedText: IntelMessage
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+         UInt32: EnemyID
+         Vector3: Position
+         Int32: Count
+         Boolean: Enabled
+         (enum) TERM_Command: TerminalCommand
+         (enum) TERM_CommandRule: TerminalCommandRule
+         String: AchievementKey
+         Int32: SustainedEventSlotIndex
+         Int32: SustainedEventStateCount
+         Single: SustainedEventStateDuration
+         Single: SustainedEventDelay
+         String: WorldEventObjectFilter
+   List<EnemySpawningData>: EnemySpawningInZone
+      (enum) eEnemyGroupType: GroupType
+      (enum) eEnemyRoleDifficulty: Difficulty
+      (enum) eEnemyZoneDistribution: Distribution
+      Single: DistributionValue
+   Boolean: EnemyRespawning
+   Boolean: EnemyRespawnRequireOtherZone
+   Int32: EnemyRespawnRoomDistance
+   Single: EnemyRespawnTimeInterval
+   Single: EnemyRespawnCountMultiplier
+   (EnemyDataBlock) List<UInt32>: EnemyRespawnExcludeList
+   Int32: HSUClustersInZone
+   Int32: CorpseClustersInZone
+   Int32: ResourceContainerClustersInZone
+   Int32: GeneratorClustersInZone
+   (enum) eZoneDistributionAmount: CorpsesInZone
+   (enum) eZoneDistributionAmount: GroundSpawnersInZone
+   (enum) eZoneDistributionAmount: HSUsInZone
+   (enum) eZoneDistributionAmount: DeconUnitsInZone
+   Boolean: AllowSmallPickupsAllocation
+   Boolean: AllowResourceContainerAllocation
+   Boolean: ForceBigPickupsAllocation
+   (ConsumableDistributionDataBlock) UInt32: ConsumableDistributionInZone
+   (BigPickupDistributionDataBlock) UInt32: BigPickupDistributionInZone
+   List<SpecificPickupSpawnData>: SpecificPickupSpawningDatas
+      UInt32: PickupToSpawn
+      String: WorldEventObjectFilter
+   List<TerminalPlacementData>: TerminalPlacements
+      ZonePlacementWeights: PlacementWeights
+         Single: Start
+         Single: Middle
+         Single: End
+      Int32: AreaSeedOffset
+      Int32: MarkerSeedOffset
+      List<TerminalLogFileData>: LocalLogFiles
+         String: FileName
+         LocalizedText: FileContent
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         (enum) Language: FileContentOriginalLanguage
+         UInt32: AttachedAudioFile
+         Int32: AttachedAudioByteSize
+         UInt32: PlayerDialogToTriggerAfterAudio
+      List<CustomTerminalCommand>: UniqueCommands
+         String: Command
+         LocalizedText: CommandDesc
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         List<TerminalOutput>: PostCommandOutputs
+            (enum) TerminalLineType: LineType
+            LocalizedText: Output
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            Single: Time
+         List<WardenObjectiveEventData>: CommandEvents
+            (enum) eWardenObjectiveEventType: Type
+            WorldEventConditionPair: Condition
+               Int32: ConditionIndex
+               Boolean: IsTrue
+            (enum) eWardenObjectiveEventTrigger: Trigger
+            (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+            Boolean: UseStaticBioscanPoints
+            (enum) LG_LayerType: Layer
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            Single: Delay
+            Single: Duration
+            Boolean: ClearDimension
+            LocalizedText: WardenIntel
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            LocalizedText: CustomSubObjectiveHeader
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            LocalizedText: CustomSubObjective
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            UInt32: SoundID
+            LocalizedText: SoundSubtitle
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            (PlayerDialogDataBlock) UInt32: DialogueID
+            (FogSettingsDataBlock) UInt32: FogSetting
+            Single: FogTransitionDuration
+            GenericEnemyWaveData: EnemyWaveData
+               (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+               (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+               Int32: AreaDistance
+               String: WorldEventObjectFilterSpawnPoint
+               Single: SpawnDelay
+               Boolean: TriggerAlarm
+               LocalizedText: IntelMessage
+                  Boolean: HasTranslation
+                  Boolean: HasValue
+                  Boolean: ShouldLocalize
+            UInt32: EnemyID
+            Vector3: Position
+            Int32: Count
+            Boolean: Enabled
+            (enum) TERM_Command: TerminalCommand
+            (enum) TERM_CommandRule: TerminalCommandRule
+            String: AchievementKey
+            Int32: SustainedEventSlotIndex
+            Int32: SustainedEventStateCount
+            Single: SustainedEventStateDuration
+            Single: SustainedEventDelay
+            String: WorldEventObjectFilter
+         (enum) TERM_CommandRule: SpecialCommandRule
+      TerminalStartStateData: StartingStateData
+         (enum) TERM_State: StartingState
+         Boolean: UseCustomInfoText
+         LocalizedText: CustomInfoText
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         Boolean: KeepShowingLocalLogCount
+         UInt32: AudioEventEnter
+         UInt32: AudioEventExit
+         Boolean: PasswordProtected
+         String: Password
+         String: PasswordHintText
+         Boolean: GeneratePassword
+         Int32: PasswordPartCount
+         Boolean: ShowPasswordLength
+         Boolean: ShowPasswordPartPositions
+         List<List<TerminalZoneSelectionData>>: TerminalZoneSelectionDatas
+            (enum) eLocalZoneIndex: LocalIndex
+            (enum) eSeedType: SeedType
+            Int32: TerminalIndex
+            Int32: StaticSeed
+   List<SpecificTerminalSpawnData>: SpecificTerminalSpawnDatas
+      String: WorldEventObjectFilter
+      Boolean: IsWardenObjective
+      Int32: WardenObjectiveChainIndex
+      List<TerminalLogFileData>: LocalLogFiles
+         String: FileName
+         LocalizedText: FileContent
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         (enum) Language: FileContentOriginalLanguage
+         UInt32: AttachedAudioFile
+         Int32: AttachedAudioByteSize
+         UInt32: PlayerDialogToTriggerAfterAudio
+      List<CustomTerminalCommand>: UniqueCommands
+         String: Command
+         LocalizedText: CommandDesc
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         List<TerminalOutput>: PostCommandOutputs
+            (enum) TerminalLineType: LineType
+            LocalizedText: Output
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            Single: Time
+         List<WardenObjectiveEventData>: CommandEvents
+            (enum) eWardenObjectiveEventType: Type
+            WorldEventConditionPair: Condition
+               Int32: ConditionIndex
+               Boolean: IsTrue
+            (enum) eWardenObjectiveEventTrigger: Trigger
+            (ChainedPuzzleDataBlock) UInt32: ChainPuzzle
+            Boolean: UseStaticBioscanPoints
+            (enum) LG_LayerType: Layer
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            Single: Delay
+            Single: Duration
+            Boolean: ClearDimension
+            LocalizedText: WardenIntel
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            LocalizedText: CustomSubObjectiveHeader
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            LocalizedText: CustomSubObjective
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            UInt32: SoundID
+            LocalizedText: SoundSubtitle
+               Boolean: HasTranslation
+               Boolean: HasValue
+               Boolean: ShouldLocalize
+            (PlayerDialogDataBlock) UInt32: DialogueID
+            (FogSettingsDataBlock) UInt32: FogSetting
+            Single: FogTransitionDuration
+            GenericEnemyWaveData: EnemyWaveData
+               (SurvivalWaveSettingsDataBlock) UInt32: WaveSettings
+               (SurvivalWavePopulationDataBlock) UInt32: WavePopulation
+               Int32: AreaDistance
+               String: WorldEventObjectFilterSpawnPoint
+               Single: SpawnDelay
+               Boolean: TriggerAlarm
+               LocalizedText: IntelMessage
+                  Boolean: HasTranslation
+                  Boolean: HasValue
+                  Boolean: ShouldLocalize
+            UInt32: EnemyID
+            Vector3: Position
+            Int32: Count
+            Boolean: Enabled
+            (enum) TERM_Command: TerminalCommand
+            (enum) TERM_CommandRule: TerminalCommandRule
+            String: AchievementKey
+            Int32: SustainedEventSlotIndex
+            Int32: SustainedEventStateCount
+            Single: SustainedEventStateDuration
+            Single: SustainedEventDelay
+            String: WorldEventObjectFilter
+         (enum) TERM_CommandRule: SpecialCommandRule
+      TerminalStartStateData: StartingStateData
+         (enum) TERM_State: StartingState
+         Boolean: UseCustomInfoText
+         LocalizedText: CustomInfoText
+            Boolean: HasTranslation
+            Boolean: HasValue
+            Boolean: ShouldLocalize
+         Boolean: KeepShowingLocalLogCount
+         UInt32: AudioEventEnter
+         UInt32: AudioEventExit
+         Boolean: PasswordProtected
+         String: Password
+         String: PasswordHintText
+         Boolean: GeneratePassword
+         Int32: PasswordPartCount
+         Boolean: ShowPasswordLength
+         Boolean: ShowPasswordPartPositions
+         List<List<TerminalZoneSelectionData>>: TerminalZoneSelectionDatas
+            (enum) eLocalZoneIndex: LocalIndex
+            (enum) eSeedType: SeedType
+            Int32: TerminalIndex
+            Int32: StaticSeed
+   Boolean: ForbidTerminalsInZone
+   List<FunctionPlacementData>: PowerGeneratorPlacements
+      ZonePlacementWeights: PlacementWeights
+         Single: Start
+         Single: Middle
+         Single: End
+      Int32: AreaSeedOffset
+      Int32: MarkerSeedOffset
+   List<FunctionPlacementData>: DisinfectionStationPlacements
+      ZonePlacementWeights: PlacementWeights
+         Single: Start
+         Single: Middle
+         Single: End
+      Int32: AreaSeedOffset
+      Int32: MarkerSeedOffset
+   List<DumbwaiterPlacementData>: DumbwaiterPlacements
+      ZonePlacementWeights: PlacementWeights
+         Single: Start
+         Single: Middle
+         Single: End
+      Int32: AreaSeedOffset
+      Int32: MarkerSeedOffset
+   Single: HealthMulti
+   ZonePlacementWeights: HealthPlacement
+      Single: Start
+      Single: Middle
+      Single: End
+   Single: WeaponAmmoMulti
+   ZonePlacementWeights: WeaponAmmoPlacement
+      Single: Start
+      Single: Middle
+      Single: End
+   Single: ToolAmmoMulti
+   ZonePlacementWeights: ToolAmmoPlacement
+      Single: Start
+      Single: Middle
+      Single: End
+   Single: DisinfectionMulti
+   ZonePlacementWeights: DisinfectionPlacement
+      Single: Start
+      Single: Middle
+      Single: End
+   List<StaticSpawnDataContainer>: StaticSpawnDataContainers
+      Int32: Count
+      (enum) LG_StaticDistributionWeightType: DistributionWeightType
+      Single: DistributionWeight
+      Single: DistributionRandomBlend
+      Single: DistributionResultPow
+      (StaticSpawnDataBlock) UInt32: StaticSpawnDataId
+      Int32: FixedSeed
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

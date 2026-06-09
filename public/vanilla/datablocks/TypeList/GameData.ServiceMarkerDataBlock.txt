@@ -1,0 +1,16 @@
+MarkerDataCommon: CommonData
+   List<MarkerComposition>: Compositions
+      Single: weight
+      String: prefab
+      (enum) ExpeditionFunction: function
+      (enum) AssetBundleShard: Shard
+   (enum) AssetBundleName: AssetBundleName
+   (MarkerGroupDataBlock) UInt32: Group
+   Single: FunctionPotential
+   Int32: RotationSnap
+   Single: RotationNoise
+   String: EditorMesh
+   Single: BoundingVolume
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

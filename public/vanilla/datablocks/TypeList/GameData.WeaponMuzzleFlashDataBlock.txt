@@ -1,0 +1,7 @@
+String: muzzleFlashFPS
+String: muzzleFlash3RD
+(enum) AssetBundleName: AssetBundleName
+(enum) AssetBundleShard: AssetBundleShard
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

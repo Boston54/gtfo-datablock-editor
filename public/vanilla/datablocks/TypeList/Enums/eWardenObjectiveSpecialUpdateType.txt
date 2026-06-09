@@ -1,0 +1,3 @@
+None - 0
+IgnoreFoundObjectiveItem - 1
+TriggerFoundObjectiveItemOnlyOnce - 2

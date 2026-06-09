@@ -1,0 +1,2 @@
+CurrentArea - 0
+CurrentZone - 1

@@ -1,0 +1,8 @@
+String: PublicName
+(enum) ArtifactCategory: ArtifactCategory
+String: PrefabPath
+List<String>: PrefabPaths
+(ArtifactTagDataBlock) UInt32: TagsID
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

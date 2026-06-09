@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>GTFO Map Editor</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div id="header">
+        <h1 class="title">GTFO Rundown Editor</h1>
+        <h2 class="subtitle">by Boston54</h2>
+    </div>
+    <div id="main-tabs">
+        <button onclick="showTab('home')" class="active">Home</button>
+        <button onclick="showTab('rundown-editor')">Rundown Editor</button>
+        <button onclick="showTab('geomorphs')">Geomorphs</button>
+        <button onclick="showTab('sounds')">Sounds</button>
+    </div>
+    <div id="content">
+
+        <!-- Home Tab -->
+        <div id="home" class="tab-page active">
+            <h2>Home</h2>
+            <p>
+                Welcome to the dev build! This is a heavily work-in-progress tool for creating GTFO rundowns.<br>
+                I fully expect that you will encounter bugs, errors, and unexpected behaviour.<br>
+                If something feels not quite right or you have feature suggestions, please send me a message on discord (boston54).
+            </p>
+        </div>
+
+        <!-- Rundown Editor Tab -->
+        <div id="rundown-editor" class="tab-page">
+            <div id="editor-buttons">
+                <button onclick="newProject()" class="editor-buttons danger">New Project</button>
+                <button onclick="uploadDatablocks()" class="editor-buttons">Upload Datablocks</button>
+                <button onclick="downloadAll()" class="editor-buttons success">Download All (ZIP)</button>
+                <input type="file" id="datablock-upload" multiple accept=".json" style="display:none">
+                <button onclick="showAddDatablockForm()" class="editor-buttons primary">Add</button>
+                <button onclick="deleteDatablock()" class="editor-buttons danger">Delete</button>
+
+                <div id="add-datablock-form" hidden>
+                    <select id="datablock-select"></select>
+
+                    <select id="datablock-start-mode">
+                        <option value="vanilla">Use vanilla template</option>
+                        <option value="blank">Start blank</option>
+                    </select>
+
+                    <button onclick="addDatablock()">Create</button>
+                </div>
+            </div>
+            <div id="editor-tab-buttons"></div>
+            <div id="editor-tab-pages"></div>
+        </div>
+
+        <!-- Geomorphs Tab -->
+        <div id="geomorphs" class="tab-page">
+            <h2>Geomorphs</h2>
+            <p>
+                This resource can be used as a reference for assigning <code>CustomGeomorph</code> in <code>LevelLayoutDataBlock</code> blocks, or <code>Prefab</code> in <code>ComplexResourceSetDataBlock</code> blocks.
+            </p>
+            <p>All the information on this page was extracted from <a href="https://docs.google.com/document/d/1iSYUASlQSaP6l7PD3HszsXSAxJ-wb8MAVwYxb9xW92c/edit?tab=t.0">All Geomorphs</a>.<br>Credit goes to ProjectZaero as the creator and GhostlyMire as the primary maintainer of the above document.</p>
+            <div id="geomorph-tabs-root" class="sub-tabs"></div>
+            <div id="geomorph-content-root"></div>
+        </div>
+
+        <!-- Sounds Tab -->
+        <div id="sounds" class="tab-page">
+            <div class="sounds-header">
+                <h2>Sounds</h2>
+                <input type="text" id="sounds-search" placeholder="Search sounds by ID, Name or Path..." class="search-input">
+            </div>
+            <p>
+                This resource can be used as a reference for assigning <code>SoundID</code> in various datablocks.
+            </p>
+            <div id="sounds-table-container"></div>
+        </div>
+    </div>
+</body>
+<script type="module" src="./src/index.js"></script>
+</html>

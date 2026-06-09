@@ -1,0 +1,1217 @@
+Boolean: NeverShowRundownTree
+Boolean: UseTierUnlockRequirements
+RundownTierProgressionData: ReqToReachTierA
+   Int32: MainSectors
+   Int32: SecondarySectors
+   Int32: ThirdSectors
+   Int32: AllClearedSectors
+RundownTierProgressionData: ReqToReachTierB
+   Int32: MainSectors
+   Int32: SecondarySectors
+   Int32: ThirdSectors
+   Int32: AllClearedSectors
+RundownTierProgressionData: ReqToReachTierC
+   Int32: MainSectors
+   Int32: SecondarySectors
+   Int32: ThirdSectors
+   Int32: AllClearedSectors
+RundownTierProgressionData: ReqToReachTierD
+   Int32: MainSectors
+   Int32: SecondarySectors
+   Int32: ThirdSectors
+   Int32: AllClearedSectors
+RundownTierProgressionData: ReqToReachTierE
+   Int32: MainSectors
+   Int32: SecondarySectors
+   Int32: ThirdSectors
+   Int32: AllClearedSectors
+RundownStorytellingData: StorytellingData
+   LocalizedText: Title
+      Boolean: HasTranslation
+      Boolean: HasValue
+      Boolean: ShouldLocalize
+   LocalizedText: TextLog
+      Boolean: HasTranslation
+      Boolean: HasValue
+      Boolean: ShouldLocalize
+   Vector2: TextLogPos
+   RundownStorytellingVisualData: Visuals
+      Color: ColorBackground
+      TierVisualData: TierAVisuals
+         Color: Color
+         Single: Scale
+         Single: ScaleYModifier
+      TierVisualData: TierBVisuals
+         Color: Color
+         Single: Scale
+         Single: ScaleYModifier
+      TierVisualData: TierCVisuals
+         Color: Color
+         Single: Scale
+         Single: ScaleYModifier
+      TierVisualData: TierDVisuals
+         Color: Color
+         Single: Scale
+         Single: ScaleYModifier
+      TierVisualData: TierEVisuals
+         Color: Color
+         Single: Scale
+         Single: ScaleYModifier
+   Vector2: SurfaceIconPosition
+   LocalizedText: SurfaceDescription
+      Boolean: HasTranslation
+      Boolean: HasValue
+      Boolean: ShouldLocalize
+   LocalizedText: ExternalExpTitle
+      Boolean: HasTranslation
+      Boolean: HasValue
+      Boolean: ShouldLocalize
+(VanityItemsLayerDropsDataBlock) UInt32: VanityItemLayerDropDataBlock
+List<ExpeditionInTierData>: TierA
+   Boolean: Enabled
+   Boolean: ExcludeFromMatchmaking
+   Boolean: IsSinglePlayer
+   Boolean: SkipLobby
+   Boolean: PutIconAboveTier
+   Boolean: DisablePlayerVoicelines
+   Boolean: ExcludeFromProgression
+   Boolean: HideOnLocked
+   Boolean: HideRolePlayDataOnLocked
+   (enum) eExpeditionAccessibility: Accessibility
+   ExpeditionIndex: UnlockedByExpedition
+      (enum) eRundownTier: Tier
+      (enum) eBuildAutoExpeditionNumber: Exp
+   RundownTierProgressionData: CustomProgressionLock
+      Int32: MainSectors
+      Int32: SecondarySectors
+      Int32: ThirdSectors
+      Int32: AllClearedSectors
+   DescriptiveData: Descriptive
+      String: Prefix
+      String: PublicName
+      Boolean: IsExtraExpedition
+      Boolean: SkipExpNumberInName
+      Boolean: UseCustomMatchmakingTier
+      (enum) eRundownTier: CustomMatchmakingTier
+      (enum) eProgressionVisualStyle: ProgressionVisualStyle
+      Int32: ExpeditionDepth
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      String: DevInfo
+   BuildSeedData: Seeds
+      Int32: BuildSeed
+      Int32: FunctionMarkerOffset
+      Int32: StandardMarkerOffset
+      Int32: LightJobSeedOffset
+   ExpeditionData: Expedition
+      (ComplexResourceSetDataBlock) UInt32: ComplexResourceData
+      (MLSArrayDescriptorReferenceDataBlock) UInt32: MLSLevelKit
+      (LightSettingsDataBlock) UInt32: LightSettings
+      (FogSettingsDataBlock) UInt32: FogSettings
+      (EnemyPopulationDataBlock) UInt32: EnemyPopulation
+      (ExpeditionBalanceDataBlock) UInt32: ExpeditionBalance
+      (SurvivalWaveSettingsDataBlock) UInt32: ScoutWaveSettings
+      (SurvivalWavePopulationDataBlock) UInt32: ScoutWavePopulation
+      Single: EnvironmentWetness
+      Color: DustColor
+      Single: DustTurbulence
+   VanityItemsDropData: VanityItemsDropData
+      (VanityItemsGroupDataBlock) List<UInt32>: Groups
+   Boolean: UseGearPicker
+   GearPicker: GearPicker
+      (GearCategoryDataBlock) UInt32: StandardGear
+      (GearCategoryDataBlock) UInt32: SpecialGear
+      (GearCategoryDataBlock) UInt32: ToolGear
+      (GearCategoryDataBlock) UInt32: MeleeGear
+   (LevelLayoutDataBlock) UInt32: LevelLayoutData
+   LayerData: MainLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: SecondaryLayerEnabled
+   (LevelLayoutDataBlock) UInt32: SecondaryLayout
+   BuildLayerFromData: BuildSecondaryFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: SecondaryLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: ThirdLayerEnabled
+   (LevelLayoutDataBlock) UInt32: ThirdLayout
+   BuildLayerFromData: BuildThirdFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: ThirdLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   List<DimensionInExpeditionData>: DimensionDatas
+      (enum) eDimensionIndex: DimensionIndex
+      (DimensionDataBlock) UInt32: DimensionData
+      Boolean: Enabled
+   UInt32: SoundEventOnWarpToReality
+   SpecialExpeditionOverridesData: SpecialOverrideData
+      Single: WeakResourceContainerWithPackChanceForLocked
+      Single: InfectionLevelAtExpeditionStart
+      Single: HealthLevelAtExpeditionStart
+      Single: StandardAmmoAtExpeditionStart
+      Single: SpecialAmmoAtExpeditionStart
+      Single: ToolAmmoAtExpeditionStart
+      String: CustomSuccessScreen
+      String: PreSuccessScreen
+      Boolean: ShowCreditsAfterSuccess
+   Boolean: HasExternalStyle
+   Boolean: HasStoryStyle
+List<ExpeditionInTierData>: TierB
+   Boolean: Enabled
+   Boolean: ExcludeFromMatchmaking
+   Boolean: IsSinglePlayer
+   Boolean: SkipLobby
+   Boolean: PutIconAboveTier
+   Boolean: DisablePlayerVoicelines
+   Boolean: ExcludeFromProgression
+   Boolean: HideOnLocked
+   Boolean: HideRolePlayDataOnLocked
+   (enum) eExpeditionAccessibility: Accessibility
+   ExpeditionIndex: UnlockedByExpedition
+      (enum) eRundownTier: Tier
+      (enum) eBuildAutoExpeditionNumber: Exp
+   RundownTierProgressionData: CustomProgressionLock
+      Int32: MainSectors
+      Int32: SecondarySectors
+      Int32: ThirdSectors
+      Int32: AllClearedSectors
+   DescriptiveData: Descriptive
+      String: Prefix
+      String: PublicName
+      Boolean: IsExtraExpedition
+      Boolean: SkipExpNumberInName
+      Boolean: UseCustomMatchmakingTier
+      (enum) eRundownTier: CustomMatchmakingTier
+      (enum) eProgressionVisualStyle: ProgressionVisualStyle
+      Int32: ExpeditionDepth
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      String: DevInfo
+   BuildSeedData: Seeds
+      Int32: BuildSeed
+      Int32: FunctionMarkerOffset
+      Int32: StandardMarkerOffset
+      Int32: LightJobSeedOffset
+   ExpeditionData: Expedition
+      (ComplexResourceSetDataBlock) UInt32: ComplexResourceData
+      (MLSArrayDescriptorReferenceDataBlock) UInt32: MLSLevelKit
+      (LightSettingsDataBlock) UInt32: LightSettings
+      (FogSettingsDataBlock) UInt32: FogSettings
+      (EnemyPopulationDataBlock) UInt32: EnemyPopulation
+      (ExpeditionBalanceDataBlock) UInt32: ExpeditionBalance
+      (SurvivalWaveSettingsDataBlock) UInt32: ScoutWaveSettings
+      (SurvivalWavePopulationDataBlock) UInt32: ScoutWavePopulation
+      Single: EnvironmentWetness
+      Color: DustColor
+      Single: DustTurbulence
+   VanityItemsDropData: VanityItemsDropData
+      (VanityItemsGroupDataBlock) List<UInt32>: Groups
+   Boolean: UseGearPicker
+   GearPicker: GearPicker
+      (GearCategoryDataBlock) UInt32: StandardGear
+      (GearCategoryDataBlock) UInt32: SpecialGear
+      (GearCategoryDataBlock) UInt32: ToolGear
+      (GearCategoryDataBlock) UInt32: MeleeGear
+   (LevelLayoutDataBlock) UInt32: LevelLayoutData
+   LayerData: MainLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: SecondaryLayerEnabled
+   (LevelLayoutDataBlock) UInt32: SecondaryLayout
+   BuildLayerFromData: BuildSecondaryFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: SecondaryLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: ThirdLayerEnabled
+   (LevelLayoutDataBlock) UInt32: ThirdLayout
+   BuildLayerFromData: BuildThirdFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: ThirdLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   List<DimensionInExpeditionData>: DimensionDatas
+      (enum) eDimensionIndex: DimensionIndex
+      (DimensionDataBlock) UInt32: DimensionData
+      Boolean: Enabled
+   UInt32: SoundEventOnWarpToReality
+   SpecialExpeditionOverridesData: SpecialOverrideData
+      Single: WeakResourceContainerWithPackChanceForLocked
+      Single: InfectionLevelAtExpeditionStart
+      Single: HealthLevelAtExpeditionStart
+      Single: StandardAmmoAtExpeditionStart
+      Single: SpecialAmmoAtExpeditionStart
+      Single: ToolAmmoAtExpeditionStart
+      String: CustomSuccessScreen
+      String: PreSuccessScreen
+      Boolean: ShowCreditsAfterSuccess
+   Boolean: HasExternalStyle
+   Boolean: HasStoryStyle
+List<ExpeditionInTierData>: TierC
+   Boolean: Enabled
+   Boolean: ExcludeFromMatchmaking
+   Boolean: IsSinglePlayer
+   Boolean: SkipLobby
+   Boolean: PutIconAboveTier
+   Boolean: DisablePlayerVoicelines
+   Boolean: ExcludeFromProgression
+   Boolean: HideOnLocked
+   Boolean: HideRolePlayDataOnLocked
+   (enum) eExpeditionAccessibility: Accessibility
+   ExpeditionIndex: UnlockedByExpedition
+      (enum) eRundownTier: Tier
+      (enum) eBuildAutoExpeditionNumber: Exp
+   RundownTierProgressionData: CustomProgressionLock
+      Int32: MainSectors
+      Int32: SecondarySectors
+      Int32: ThirdSectors
+      Int32: AllClearedSectors
+   DescriptiveData: Descriptive
+      String: Prefix
+      String: PublicName
+      Boolean: IsExtraExpedition
+      Boolean: SkipExpNumberInName
+      Boolean: UseCustomMatchmakingTier
+      (enum) eRundownTier: CustomMatchmakingTier
+      (enum) eProgressionVisualStyle: ProgressionVisualStyle
+      Int32: ExpeditionDepth
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      String: DevInfo
+   BuildSeedData: Seeds
+      Int32: BuildSeed
+      Int32: FunctionMarkerOffset
+      Int32: StandardMarkerOffset
+      Int32: LightJobSeedOffset
+   ExpeditionData: Expedition
+      (ComplexResourceSetDataBlock) UInt32: ComplexResourceData
+      (MLSArrayDescriptorReferenceDataBlock) UInt32: MLSLevelKit
+      (LightSettingsDataBlock) UInt32: LightSettings
+      (FogSettingsDataBlock) UInt32: FogSettings
+      (EnemyPopulationDataBlock) UInt32: EnemyPopulation
+      (ExpeditionBalanceDataBlock) UInt32: ExpeditionBalance
+      (SurvivalWaveSettingsDataBlock) UInt32: ScoutWaveSettings
+      (SurvivalWavePopulationDataBlock) UInt32: ScoutWavePopulation
+      Single: EnvironmentWetness
+      Color: DustColor
+      Single: DustTurbulence
+   VanityItemsDropData: VanityItemsDropData
+      (VanityItemsGroupDataBlock) List<UInt32>: Groups
+   Boolean: UseGearPicker
+   GearPicker: GearPicker
+      (GearCategoryDataBlock) UInt32: StandardGear
+      (GearCategoryDataBlock) UInt32: SpecialGear
+      (GearCategoryDataBlock) UInt32: ToolGear
+      (GearCategoryDataBlock) UInt32: MeleeGear
+   (LevelLayoutDataBlock) UInt32: LevelLayoutData
+   LayerData: MainLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: SecondaryLayerEnabled
+   (LevelLayoutDataBlock) UInt32: SecondaryLayout
+   BuildLayerFromData: BuildSecondaryFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: SecondaryLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: ThirdLayerEnabled
+   (LevelLayoutDataBlock) UInt32: ThirdLayout
+   BuildLayerFromData: BuildThirdFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: ThirdLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   List<DimensionInExpeditionData>: DimensionDatas
+      (enum) eDimensionIndex: DimensionIndex
+      (DimensionDataBlock) UInt32: DimensionData
+      Boolean: Enabled
+   UInt32: SoundEventOnWarpToReality
+   SpecialExpeditionOverridesData: SpecialOverrideData
+      Single: WeakResourceContainerWithPackChanceForLocked
+      Single: InfectionLevelAtExpeditionStart
+      Single: HealthLevelAtExpeditionStart
+      Single: StandardAmmoAtExpeditionStart
+      Single: SpecialAmmoAtExpeditionStart
+      Single: ToolAmmoAtExpeditionStart
+      String: CustomSuccessScreen
+      String: PreSuccessScreen
+      Boolean: ShowCreditsAfterSuccess
+   Boolean: HasExternalStyle
+   Boolean: HasStoryStyle
+List<ExpeditionInTierData>: TierD
+   Boolean: Enabled
+   Boolean: ExcludeFromMatchmaking
+   Boolean: IsSinglePlayer
+   Boolean: SkipLobby
+   Boolean: PutIconAboveTier
+   Boolean: DisablePlayerVoicelines
+   Boolean: ExcludeFromProgression
+   Boolean: HideOnLocked
+   Boolean: HideRolePlayDataOnLocked
+   (enum) eExpeditionAccessibility: Accessibility
+   ExpeditionIndex: UnlockedByExpedition
+      (enum) eRundownTier: Tier
+      (enum) eBuildAutoExpeditionNumber: Exp
+   RundownTierProgressionData: CustomProgressionLock
+      Int32: MainSectors
+      Int32: SecondarySectors
+      Int32: ThirdSectors
+      Int32: AllClearedSectors
+   DescriptiveData: Descriptive
+      String: Prefix
+      String: PublicName
+      Boolean: IsExtraExpedition
+      Boolean: SkipExpNumberInName
+      Boolean: UseCustomMatchmakingTier
+      (enum) eRundownTier: CustomMatchmakingTier
+      (enum) eProgressionVisualStyle: ProgressionVisualStyle
+      Int32: ExpeditionDepth
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      String: DevInfo
+   BuildSeedData: Seeds
+      Int32: BuildSeed
+      Int32: FunctionMarkerOffset
+      Int32: StandardMarkerOffset
+      Int32: LightJobSeedOffset
+   ExpeditionData: Expedition
+      (ComplexResourceSetDataBlock) UInt32: ComplexResourceData
+      (MLSArrayDescriptorReferenceDataBlock) UInt32: MLSLevelKit
+      (LightSettingsDataBlock) UInt32: LightSettings
+      (FogSettingsDataBlock) UInt32: FogSettings
+      (EnemyPopulationDataBlock) UInt32: EnemyPopulation
+      (ExpeditionBalanceDataBlock) UInt32: ExpeditionBalance
+      (SurvivalWaveSettingsDataBlock) UInt32: ScoutWaveSettings
+      (SurvivalWavePopulationDataBlock) UInt32: ScoutWavePopulation
+      Single: EnvironmentWetness
+      Color: DustColor
+      Single: DustTurbulence
+   VanityItemsDropData: VanityItemsDropData
+      (VanityItemsGroupDataBlock) List<UInt32>: Groups
+   Boolean: UseGearPicker
+   GearPicker: GearPicker
+      (GearCategoryDataBlock) UInt32: StandardGear
+      (GearCategoryDataBlock) UInt32: SpecialGear
+      (GearCategoryDataBlock) UInt32: ToolGear
+      (GearCategoryDataBlock) UInt32: MeleeGear
+   (LevelLayoutDataBlock) UInt32: LevelLayoutData
+   LayerData: MainLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: SecondaryLayerEnabled
+   (LevelLayoutDataBlock) UInt32: SecondaryLayout
+   BuildLayerFromData: BuildSecondaryFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: SecondaryLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: ThirdLayerEnabled
+   (LevelLayoutDataBlock) UInt32: ThirdLayout
+   BuildLayerFromData: BuildThirdFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: ThirdLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   List<DimensionInExpeditionData>: DimensionDatas
+      (enum) eDimensionIndex: DimensionIndex
+      (DimensionDataBlock) UInt32: DimensionData
+      Boolean: Enabled
+   UInt32: SoundEventOnWarpToReality
+   SpecialExpeditionOverridesData: SpecialOverrideData
+      Single: WeakResourceContainerWithPackChanceForLocked
+      Single: InfectionLevelAtExpeditionStart
+      Single: HealthLevelAtExpeditionStart
+      Single: StandardAmmoAtExpeditionStart
+      Single: SpecialAmmoAtExpeditionStart
+      Single: ToolAmmoAtExpeditionStart
+      String: CustomSuccessScreen
+      String: PreSuccessScreen
+      Boolean: ShowCreditsAfterSuccess
+   Boolean: HasExternalStyle
+   Boolean: HasStoryStyle
+List<ExpeditionInTierData>: TierE
+   Boolean: Enabled
+   Boolean: ExcludeFromMatchmaking
+   Boolean: IsSinglePlayer
+   Boolean: SkipLobby
+   Boolean: PutIconAboveTier
+   Boolean: DisablePlayerVoicelines
+   Boolean: ExcludeFromProgression
+   Boolean: HideOnLocked
+   Boolean: HideRolePlayDataOnLocked
+   (enum) eExpeditionAccessibility: Accessibility
+   ExpeditionIndex: UnlockedByExpedition
+      (enum) eRundownTier: Tier
+      (enum) eBuildAutoExpeditionNumber: Exp
+   RundownTierProgressionData: CustomProgressionLock
+      Int32: MainSectors
+      Int32: SecondarySectors
+      Int32: ThirdSectors
+      Int32: AllClearedSectors
+   DescriptiveData: Descriptive
+      String: Prefix
+      String: PublicName
+      Boolean: IsExtraExpedition
+      Boolean: SkipExpNumberInName
+      Boolean: UseCustomMatchmakingTier
+      (enum) eRundownTier: CustomMatchmakingTier
+      (enum) eProgressionVisualStyle: ProgressionVisualStyle
+      Int32: ExpeditionDepth
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      String: DevInfo
+   BuildSeedData: Seeds
+      Int32: BuildSeed
+      Int32: FunctionMarkerOffset
+      Int32: StandardMarkerOffset
+      Int32: LightJobSeedOffset
+   ExpeditionData: Expedition
+      (ComplexResourceSetDataBlock) UInt32: ComplexResourceData
+      (MLSArrayDescriptorReferenceDataBlock) UInt32: MLSLevelKit
+      (LightSettingsDataBlock) UInt32: LightSettings
+      (FogSettingsDataBlock) UInt32: FogSettings
+      (EnemyPopulationDataBlock) UInt32: EnemyPopulation
+      (ExpeditionBalanceDataBlock) UInt32: ExpeditionBalance
+      (SurvivalWaveSettingsDataBlock) UInt32: ScoutWaveSettings
+      (SurvivalWavePopulationDataBlock) UInt32: ScoutWavePopulation
+      Single: EnvironmentWetness
+      Color: DustColor
+      Single: DustTurbulence
+   VanityItemsDropData: VanityItemsDropData
+      (VanityItemsGroupDataBlock) List<UInt32>: Groups
+   Boolean: UseGearPicker
+   GearPicker: GearPicker
+      (GearCategoryDataBlock) UInt32: StandardGear
+      (GearCategoryDataBlock) UInt32: SpecialGear
+      (GearCategoryDataBlock) UInt32: ToolGear
+      (GearCategoryDataBlock) UInt32: MeleeGear
+   (LevelLayoutDataBlock) UInt32: LevelLayoutData
+   LayerData: MainLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: SecondaryLayerEnabled
+   (LevelLayoutDataBlock) UInt32: SecondaryLayout
+   BuildLayerFromData: BuildSecondaryFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: SecondaryLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   Boolean: ThirdLayerEnabled
+   (LevelLayoutDataBlock) UInt32: ThirdLayout
+   BuildLayerFromData: BuildThirdFrom
+      (enum) LG_LayerType: LayerType
+      (enum) eLocalZoneIndex: Zone
+   LayerData: ThirdLayerData
+      (enum) List<eLocalZoneIndex>: ZonesWithBulkheadEntrance
+      List<BulkheadDoorPlacementData>: BulkheadDoorControllerPlacements
+         (enum) eLocalZoneIndex: ZoneIndex
+         ZonePlacementWeights: PlacementWeights
+            Single: Start
+            Single: Middle
+            Single: End
+         Int32: AreaSeedOffset
+         Int32: MarkerSeedOffset
+      List<List<ZonePlacementData>>: BulkheadKeyPlacements
+         (enum) eDimensionIndex: DimensionIndex
+         (enum) eLocalZoneIndex: LocalIndex
+         ZonePlacementWeights: Weights
+            Single: Start
+            Single: Middle
+            Single: End
+      WardenObjectiveLayerData: ObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      List<WardenObjectiveLayerData>: ChainedObjectiveData
+         (WardenObjectiveDataBlock) UInt32: DataBlockId
+         (enum) eWardenObjectiveWinCondition: WinCondition
+         List<List<ZonePlacementData>>: ZonePlacementDatas
+            (enum) eDimensionIndex: DimensionIndex
+            (enum) eLocalZoneIndex: LocalIndex
+            ZonePlacementWeights: Weights
+               Single: Start
+               Single: Middle
+               Single: End
+      ArtifactLayerData: ArtifactData
+         Single: ArtifactAmountMulti
+         (ArtifactDistributionDataBlock) UInt32: ArtifactLayerDistributionDataID
+         List<ArtifactZoneDistribution>: ArtifactZoneDistributions
+            (enum) eLocalZoneIndex: Zone
+            Single: BasicArtifactWeight
+            Single: AdvancedArtifactWeight
+            Single: SpecializedArtifactWeight
+   List<DimensionInExpeditionData>: DimensionDatas
+      (enum) eDimensionIndex: DimensionIndex
+      (DimensionDataBlock) UInt32: DimensionData
+      Boolean: Enabled
+   UInt32: SoundEventOnWarpToReality
+   SpecialExpeditionOverridesData: SpecialOverrideData
+      Single: WeakResourceContainerWithPackChanceForLocked
+      Single: InfectionLevelAtExpeditionStart
+      Single: HealthLevelAtExpeditionStart
+      Single: StandardAmmoAtExpeditionStart
+      Single: SpecialAmmoAtExpeditionStart
+      Single: ToolAmmoAtExpeditionStart
+      String: CustomSuccessScreen
+      String: PreSuccessScreen
+      Boolean: ShowCreditsAfterSuccess
+   Boolean: HasExternalStyle
+   Boolean: HasStoryStyle
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

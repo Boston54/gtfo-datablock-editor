@@ -1,0 +1,189 @@
+(enum) Complex: ComplexType
+(enum) SubComplex: PrimareSubComplexUsed
+(enum) AssetBundleName: BundleName
+LevelGenConfig: LevelGenConfig
+   Int32: GridSize
+   Single: CellDimension
+   Single: AltitudeOffset
+   (enum) LG_FloorTransitionDirection: TransitionDirection
+   (enum) LG_LevelProgression: LevelProgression
+List<ResourceData>: GeomorphTiles_1x1
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: GeomorphTiles_2x1
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: GeomorphTiles_2x2
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+Boolean: RandomizeGeomorphOrder
+List<ResourceData>: SmallWeakGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SmallSecurityGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SmallApexGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SmallBulkheadGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SmallMainPathBulkheadGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SmallWallCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SmallDestroyedCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SmallWallAndDestroyedCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: MediumWeakGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: MediumSecurityGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: MediumApexGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: MediumBulkheadGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: MediumMainPathBulkheadGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: MediumWallCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: MediumDestroyedCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: MediumWallAndDestroyedCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: LargeWeakGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: LargeSecurityGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: LargeApexGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: LargeBulkheadGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: LargeMainPathBulkheadGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: LargeWallCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: LargeDestroyedCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: LargeWallAndDestroyedCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: StraightPlugsNoGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: StraightPlugsWithGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SingleDropPlugsNoGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: SingleDropPlugsWithGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: DoubleDropPlugsNoGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: DoubleDropPlugsWithGates
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: PlugCaps
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: ElevatorShafts_1x1
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: CustomGeomorphs_Exit_1x1
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: CustomGeomorphs_Objective_1x1
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: CustomGeomorphs_Challenge_1x1
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: Ladders_4m
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: Ladders_2m
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: Ladders_1m
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: Ladders_05m
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: Ladders_Bottom
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+List<ResourceData>: Ladders_Top
+   String: Prefab
+   (enum) SubComplex: SubComplex
+   (enum) AssetBundleShard: Shard
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

@@ -1,0 +1,95 @@
+MinMaxValue: MeleeAttackDistance
+   Single: Min
+   Single: Max
+MinMaxValue: RangedAttackDistance
+   Single: Min
+   Single: Max
+MinMaxValue: StrafeDistance
+   Single: Min
+   Single: Max
+MinMaxValue: HowOftenToStrafe
+   Single: Min
+   Single: Max
+MinMaxValue: DistanceToStrafeWithoutLOS
+   Single: Min
+   Single: Max
+MinMaxValue: DistanceToStrafeInTargetsLOS
+   Single: Min
+   Single: Max
+MinMaxValue: DistanceToStrafeWithoutTargetsLOS
+   Single: Min
+   Single: Max
+MinMaxValue: MoveCloserDelayAfterAttack
+   Single: Min
+   Single: Max
+MinMaxValue: MoveTowardsTargetDuration
+   Single: Min
+   Single: Max
+MinMaxValue: ClosestTargetDistance
+   Single: Min
+   Single: Max
+MinMaxValue: StartWalkDuration
+   Single: Min
+   Single: Max
+MinMaxValue: StartWalkTimeoutUntilNext
+   Single: Min
+   Single: Max
+MinMaxValue: ScreamStateDelay
+   Single: Min
+   Single: Max
+Single: RushTargetDistance
+Single: ChanceToPropagateOnDetection
+Single: ChanceToPropagateOnDeath
+Single: ChanceToPropagateToMastermind
+Single: PropagationDistance
+Boolean: DisableTargetPreferenceWeight
+Boolean: IgnoreBotsTargeting
+Boolean: IsFlyer
+(enum) AgentMode: Flyer_HibernateRemap
+Int32: Flyer_PathingNodeMargin
+MinMaxValue: PathingTargetOffsetY
+   Single: Min
+   Single: Max
+MinMaxValue: PathingTargetDistance
+   Single: Min
+   Single: Max
+MinMaxValue: StrafeVerticalDistance
+   Single: Min
+   Single: Max
+Single: Flyer_Acceleration
+Single: Flyer_Deceleration
+Single: Flyer_SpeedMultipler
+MinMaxValue: Flyer_AttackChargeDuration
+   Single: Min
+   Single: Max
+MinMaxValue: Flyer_AttackDuration
+   Single: Min
+   Single: Max
+MinMaxValue: Flyer_BackToMovementAfterAttack
+   Single: Min
+   Single: Max
+Single: Flyer_LightDamageForce
+Single: Flyer_HeavyDamageForce
+MinMaxValue: Flyer_RecoilForce
+   Single: Min
+   Single: Max
+MinMaxValue: Flyer_RecoilTorque
+   Single: Min
+   Single: Max
+Single: Flyer_RollThreshold
+Single: Flyer_YawThreshold
+Single: Flyer_PitchThreshold
+MinMaxValue: Flyer_DeathDealy
+   Single: Min
+   Single: Max
+(SurvivalWavePopulationDataBlock) UInt32: Flyer_BossSpawnWaveID
+(EnemyDataBlock) UInt32: Flyer_BossEnemyID
+MinMaxValue: Flyer_SpawnOutOfBossStateDuration
+   Single: Min
+   Single: Max
+MinMaxValue: Flyer_EstimatedDistanceFromBoss
+   Single: Min
+   Single: Max
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

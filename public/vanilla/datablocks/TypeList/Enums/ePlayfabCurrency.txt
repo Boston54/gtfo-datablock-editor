@@ -1,0 +1,3 @@
+CurrA - 0
+CurrB - 1
+CurrC - 2

@@ -1,0 +1,11 @@
+List<LightCategorySetting>: LightCategorySettings
+   Boolean: On
+   (enum) LightCategory: Category
+   Single: Chance
+   Single: ChanceBroken
+   Color: Color
+   Single: IntensityMul
+   Single: Weight
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

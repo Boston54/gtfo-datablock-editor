@@ -1,0 +1,5 @@
+Color: LightColor
+Color: PlanetAlbedo
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

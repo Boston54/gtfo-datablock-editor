@@ -1,0 +1,19 @@
+GearPartGeneralData: General
+   String: PublicName
+   String: Model
+   List<String>: Children
+   (GearCategoryFilterDataBlock) UInt32: GearCategoryFilter
+   String: LeftHandGripAnim
+   String: RightHandGripAnim
+   (enum) AssetBundleName: AssetBundle
+   (enum) AssetBundleShard: BundleShard
+List<GearPartAlignData>: Aligns
+   (enum) eGearPartAlign: AlignType
+   String: AlignName
+GearSightPartProperties: SightProperties
+   Int32: GearFovZoom
+   Int32: WorldFovZoom
+   Single: ZoomSensitivityModifier
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

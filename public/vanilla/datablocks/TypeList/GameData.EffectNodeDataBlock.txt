@@ -1,0 +1,10 @@
+List<EffectNodeListData>: PlayAll
+   String: EffectNode
+   Single: Chance
+List<String>: PlayOne
+EffectNodePrefabData: EffectToSpawn
+   String: PrefabPointer
+   Boolean: AttachToRoot
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

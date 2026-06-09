@@ -1,0 +1,4 @@
+Int32: Fog
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

@@ -1,0 +1,18 @@
+List<FeedbackAudioCompData>: audioData
+   Boolean: Enabled
+   (enum) NetworkMode: NetMode
+   (enum) MaterialType: Material
+   Single: Delay
+   String: AudioEvent
+List<FeedbackEffectCompData>: effectData
+   Boolean: Enabled
+   (enum) NetworkMode: NetMode
+   (enum) MaterialType: Material
+   Single: Chance
+   Single: Delay
+   String: EffectPrefab
+   Boolean: AttachToRoot
+   Boolean: DoNoKill
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

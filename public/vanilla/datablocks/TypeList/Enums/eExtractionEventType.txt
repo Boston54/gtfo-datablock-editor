@@ -1,0 +1,6 @@
+EnemyWaveSpawn - 0
+ElevatorBioscan - 1
+ThickFog - 2
+LightsOff - 3
+LightsOn - 4
+RemoveAir - 5

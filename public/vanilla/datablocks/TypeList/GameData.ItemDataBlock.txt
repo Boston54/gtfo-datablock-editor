@@ -1,0 +1,47 @@
+String: publicName
+LocalizedText: LocalizedName
+   Boolean: HasTranslation
+   Boolean: HasValue
+   Boolean: ShouldLocalize
+String: terminalItemShortName
+LocalizedText: terminalItemLongName
+   Boolean: HasTranslation
+   Boolean: HasValue
+   Boolean: ShouldLocalize
+Boolean: addSerialNumberToName
+Boolean: registerInTerminalSystem
+(enum) ItemWarpType: DimensionWarpType
+(enum) AssetBundleShard: Shard
+(enum) InventorySlot: inventorySlot
+(ItemFPSSettingsDataBlock) UInt32: FPSSettings
+(enum) Crosshair: crosshair
+String: HUDIcon
+Boolean: ShowCrosshairWhenAiming
+Boolean: GUIShowAmmoClip
+Boolean: GUIShowAmmoPack
+Boolean: GUIShowAmmoTotalRel
+Boolean: GUIShowAmmoInfinite
+Boolean: canMoveQuick
+Boolean: BlockToolAmmoRefill
+Single: ClassAmmoCostFactor
+Int32: ConsumableAmmoMin
+Int32: ConsumableAmmoMax
+String: audioEventEquip
+List<String>: FirstPersonPrefabs
+List<String>: ThirdPersonPrefabs
+List<String>: PickupPrefabs
+List<String>: InstancePrefabs
+Single: EquipTransitionTime
+Single: AimTransitionTime
+String: FPSArmsAnim
+(enum) eFullbodyPlayerMovementSet: ThirdPersonFullbodyMovementSet
+String: LeftHandGripAlign
+String: LeftHandGripAnim
+String: RightHandGripAlign
+String: RightHandGripAnim
+String: SightLookAlign
+String: MuzzleAlign
+String: BackpackAlign
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

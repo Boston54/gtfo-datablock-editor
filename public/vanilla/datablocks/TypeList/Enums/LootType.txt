@@ -1,0 +1,9 @@
+Health - 0
+Ammo - 1
+Battery - 2
+ArtifactBasic - 3
+ArtifactUncommon - 4
+ArtifactRare - 5
+ArtifactLegendary - 6
+ArtifactExotic - 7
+ObjectiveScavangeItem - 8

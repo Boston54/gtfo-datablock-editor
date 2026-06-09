@@ -1,0 +1,14 @@
+Boolean: Enabled
+Color: FogColor
+Single: FogDensity
+Single: FogAmbience
+Vector3: DensityNoiseDirection
+Single: DensityNoiseSpeed
+Single: DensityNoiseScale
+Single: DensityHeightAltitude
+Single: DensityHeightRange
+Single: DensityHeightMaxBoost
+Single: Infection
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

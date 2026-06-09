@@ -1,0 +1,7 @@
+Int32: SpawnsPerZone
+List<BigPickupSpawnData>: SpawnData
+   (ItemDataBlock) UInt32: ItemID
+   Single: Weight
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

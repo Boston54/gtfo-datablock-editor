@@ -1,0 +1,160 @@
+Single: HoldToChargeTime
+Single: MaxDamageChargeTime
+Single: AutoAttackTime
+Single: AutoAttackWarningTime
+AnimHash: FPIdleAnim
+   String: Name
+AnimHash: FPSettleAnim
+   String: Name
+AnimHash: FPWalkAnim
+   String: Name
+AnimHash: FPRunAnim
+   String: Name
+AnimHash: FPJumpAnim
+   String: Name
+AnimHash: FPLandAnim
+   String: Name
+AnimHash: FPChargeCancelAnimRight
+   String: Name
+AnimHash: FPChargeCancelAnimLeft
+   String: Name
+MeleeAttackData: FPAttackMissRight
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackMissLeft
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackHitRight
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackHitLeft
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackPush
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackChargeUpRight
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackChargeUpLeft
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackChargeUpReleaseRight
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackChargeUpReleaseLeft
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackChargeUpHitRight
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+MeleeAttackData: FPAttackChargeUpHitLeft
+   (enum) eMeleeAttackSide: Side
+   AnimHash: Anim
+      String: Name
+   Single: AnimBlendIn
+   Single: AttackLengthFrameTime
+   Single: AttackHitFrameTime
+   Single: DamageStartFrameTime
+   Single: DamageEndFrameTime
+   Single: AttackCamFwdHitFrameTime
+   Single: ComboEarlyFrameTime
+AnimHash: TPAnimHashIdle
+   String: Name
+AnimHash: TPAnimHashIdleCrouch
+   String: Name
+AnimHash: TPAnimHashAttackLeft
+   String: Name
+AnimHash: TPAnimHashAttackLeftCrouch
+   String: Name
+AnimHash: TPAnimHashAttackLeftCharge
+   String: Name
+AnimHash: TPAnimHashAttackLeftChargeCrouch
+   String: Name
+AnimHash: TPAnimHashAttackLeftRelease
+   String: Name
+AnimHash: TPAnimHashAttackLeftReleaseCrouch
+   String: Name
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

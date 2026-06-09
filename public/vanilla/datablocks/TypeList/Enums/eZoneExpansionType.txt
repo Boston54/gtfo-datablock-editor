@@ -1,0 +1,8 @@
+Random - 0
+Collapsed - 1
+Expansional - 2
+Directional_Forward - 3
+Directional_Backward - 4
+Directional_Right - 5
+Directional_Left - 6
+Directional_Random - 7

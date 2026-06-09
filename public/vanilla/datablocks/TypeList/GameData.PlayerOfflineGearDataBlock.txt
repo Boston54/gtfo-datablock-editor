@@ -1,0 +1,5 @@
+(enum) eOfflineGearType: Type
+String: GearJSON
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

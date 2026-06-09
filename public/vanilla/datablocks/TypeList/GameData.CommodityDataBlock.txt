@@ -1,0 +1,9 @@
+String: PublicName
+(enum) eCommodityType: Type
+(enum) eCommodityPackSize: PackSize
+(ItemDataBlock) UInt32: Item
+(enum) ePlayfabCurrency: PlayfabCurrency
+Int32: PlayfabCurrencyValue
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

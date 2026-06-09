@@ -1,0 +1,5 @@
+(RundownDataBlock) List<UInt32>: RundownIdsToLoad
+(enum) eStartupScreenKey: StartupScreenToLoad
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

@@ -1,0 +1,8 @@
+Color: Main
+Color: Second
+Color: Third
+Color: DecalA
+Color: DecalB
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

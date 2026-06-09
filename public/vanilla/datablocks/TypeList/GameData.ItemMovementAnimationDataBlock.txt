@@ -1,0 +1,31 @@
+Vector3AnimationCurve: ItemPosition
+   AnimationCurve: X
+   AnimationCurve: Y
+   AnimationCurve: Z
+   Vector2: VarianceX
+   Vector2: VarianceY
+   Vector2: VarianceZ
+Vector3AnimationCurve: ItemRotation
+   AnimationCurve: X
+   AnimationCurve: Y
+   AnimationCurve: Z
+   Vector2: VarianceX
+   Vector2: VarianceY
+   Vector2: VarianceZ
+Vector3AnimationCurve: CameraPosition
+   AnimationCurve: X
+   AnimationCurve: Y
+   AnimationCurve: Z
+   Vector2: VarianceX
+   Vector2: VarianceY
+   Vector2: VarianceZ
+Vector3AnimationCurve: CameraRotation
+   AnimationCurve: X
+   AnimationCurve: Y
+   AnimationCurve: Z
+   Vector2: VarianceX
+   Vector2: VarianceY
+   Vector2: VarianceZ
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

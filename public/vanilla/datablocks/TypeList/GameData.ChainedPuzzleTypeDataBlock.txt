@@ -1,0 +1,4 @@
+String: Prefab
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

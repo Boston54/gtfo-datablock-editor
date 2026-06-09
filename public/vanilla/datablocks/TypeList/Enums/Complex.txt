@@ -1,0 +1,3 @@
+Mining - 0
+Service - 1
+Tech - 2

@@ -1,0 +1,4 @@
+Explosive - 0
+Glue - 1
+Fire - 2
+Health - 3

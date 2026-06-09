@@ -1,0 +1,2 @@
+Quick - 0
+Slow - 1

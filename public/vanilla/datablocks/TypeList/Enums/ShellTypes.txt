@@ -1,0 +1,5 @@
+Shell_None - 0
+Shell_9mm - 1
+Shell_45_ACP - 2
+Shell_338 - 3
+Shell_12_Gauge - 4

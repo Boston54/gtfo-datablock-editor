@@ -1,0 +1,19 @@
+String: CoverageTexture
+Single: CoverageSize
+Single: Altitude
+Single: Height
+Single: Center
+Single: Belly
+Single: Crown
+Single: Anvil
+Single: Softness
+String: NoiseTexture
+Single: NoiseScale1
+Single: NoiseIntensity1
+Single: NoiseScale2
+Single: NoiseIntensity2
+Single: AmbientOcclusion
+(enum) AssetBundleShard: startupShard
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

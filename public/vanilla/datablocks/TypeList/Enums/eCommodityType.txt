@@ -1,0 +1,4 @@
+Artifact - 0
+PhysicalSample - 1
+LiquidSample - 2
+Data - 3

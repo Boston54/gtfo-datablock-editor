@@ -1,0 +1,4 @@
+Normal - 0
+Story - 1
+External - 2
+ExternalStory - 3

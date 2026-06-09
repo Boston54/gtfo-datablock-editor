@@ -1,0 +1,5 @@
+InitialState - 0
+Damage - 1
+Health - 2
+ProcessingSpeed - 3
+Tool - 4

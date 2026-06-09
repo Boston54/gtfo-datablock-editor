@@ -1,0 +1,9 @@
+Single: weaponDetectionDistanceMin
+Single: weaponDetectionDistanceMax
+Single: detectionNodeDistanceMax
+Single: movementDetectionDistance
+Single: detectionBuildupSpeed
+Single: detectionCooldownSpeed
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

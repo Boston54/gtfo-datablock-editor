@@ -1,0 +1,12 @@
+Unspecified - 1
+EnemyCripple - 2
+EnemyRunner - 4
+EnemyFiddler - 8
+EnemyLow - 16
+EnemyCrawlFlip - 32
+EnemyCrawl - 64
+EnemyGiant - 128
+EnemyBig - 256
+EnemyExploder - 512
+EnemyBirtherCrawlFlip - 1024
+EnemyPouncer - 2048

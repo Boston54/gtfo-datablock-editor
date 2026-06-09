@@ -1,0 +1,47 @@
+(enum) eEnemyType: EnemyType
+(enum) AssetBundleName: AssetBundle
+(enum) AssetBundleShard: BundleShard
+List<String>: BasePrefabs
+List<ModelData>: ModelDatas
+   String: ModelFile
+   String: ModelCustomization
+   Vector3: PositionOffset
+   Vector3: RotationOffset
+   Vector3: NeckScale
+   Vector3: HeadScale
+   Vector3: ChestScale
+   Vector3: ArmScale
+   Vector3: LegScale
+   String: LinkBone
+   Vector2: SizeRange
+(EnemyDetectionDataBlock) UInt32: DetectionDataId
+(EnemyBehaviorDataBlock) UInt32: BehaviorDataId
+(EnemyMovementDataBlock) UInt32: MovementDataId
+(EnemyBalancingDataBlock) UInt32: BalancingDataId
+(EnemySFXDataBlock) UInt32: SFXDataId
+(DimensionDataBlock) List<UInt32>: ArenaDimensions
+List<LinkedSlaveModelData>: LinkedSlaveModels
+   (enum) AnimatorControllerHandleName: AnimationSet
+   String: ModelFile
+   String: ModelCustomization
+   Vector3: PositionOffset
+   Vector3: RotationOffset
+   Vector3: NeckScale
+   Vector3: HeadScale
+   Vector3: ChestScale
+   Vector3: ArmScale
+   Vector3: LegScale
+   String: LinkBone
+   Vector2: SizeRange
+(enum) MaterialType: InternalMaterial
+Boolean: isCoccoon
+(PlayerDialogDataBlock) UInt32: EnemySpottedDialogId
+List<AbilityData>: AI_Abilities
+   Boolean: Enabled
+   String: AbilityPrefab
+   (enum) AgentAbility: AbilityType
+   Single: Cooldown
+   (enum) List<AbilityCondition>: AbilityConditions
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

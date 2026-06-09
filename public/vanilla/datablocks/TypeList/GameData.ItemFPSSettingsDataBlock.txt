@@ -1,0 +1,40 @@
+Vector3: localPosHip
+Vector3: localRotHip
+Single: SwayAmount
+Single: crouchTiltAngle
+Vector3: localPosRelaxed
+Vector3: localRotRelaxed
+Vector3: localPosZoom
+Vector3: localRotZoom
+Vector3: bodyOffsetLocal
+Vector3: bodyRotationOffsetLocal
+Int32: ItemCameraFOVDefault
+Int32: ItemCameraFOVZoom
+Int32: LookCameraFOVZoom
+Boolean: canAim
+Boolean: onlyStartAimOnPressed
+Boolean: canRelax
+Single: customDelayUntilRelax
+Boolean: allowRotToAimPos
+Single: rotToAimPosMinDis
+(enum) eFPISTransitionTime: transitionToAim
+(ItemMovementAnimationDataBlock) UInt32: RecoilAnimation
+(ItemMovementAnimationDataBlock) UInt32: IdleAnimation
+(ItemMovementAnimationDataBlock) UInt32: WalkAnimation
+(ItemMovementAnimationDataBlock) UInt32: RunAnimation
+(ItemMovementAnimationDataBlock) UInt32: JumpAnimation
+(ItemMovementAnimationDataBlock) UInt32: LandAnimation
+(ItemMovementAnimationDataBlock) UInt32: ChargeCancelAnimation
+DOFSettingsData: DofDefault
+   Boolean: enabled
+   Single: focusDistance
+   Single: aperture
+   Single: focalLength
+DOFSettingsData: DofAim
+   Boolean: enabled
+   Single: focusDistance
+   Single: aperture
+   Single: focalLength
+String: name
+Boolean: internalEnabled
+UInt32: persistentID

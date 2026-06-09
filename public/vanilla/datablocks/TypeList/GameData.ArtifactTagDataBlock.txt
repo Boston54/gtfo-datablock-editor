@@ -1,0 +1,4 @@
+(enum) List<ArtifactTags>: Tags
+String: name
+Boolean: internalEnabled
+UInt32: persistentID
