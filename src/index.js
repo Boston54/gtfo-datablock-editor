@@ -41,6 +41,11 @@ window.newProject = function() {
 }
 
 window.openProject = async function() {
+    if (!window.showDirectoryPicker) {
+        document.getElementById('project-upload').click();
+        return;
+    }
+
     try {
         const directoryHandle = await window.showDirectoryPicker();
         
@@ -58,20 +63,12 @@ window.openProject = async function() {
             if (entry.kind === 'file' && entry.name.endsWith('.json')) {
                 const file = await entry.getFile();
                 datablockFiles.push(file);
-            } else if (entry.kind === 'directory' && (entry.name === 'Custom' || entry.name === 'custom')) {
+            } else if (entry.kind === 'directory' && (entry.name.toLowerCase() === 'custom')) {
                 await scanConfigFolder(entry, configFiles, entry.name);
             }
         }
 
-        if (datablockFiles.length > 0) {
-            await importDatablocks(datablockFiles);
-        }
-        if (configFiles.length > 0) {
-            await importConfigs(configFiles);
-        }
-        
-        markDatablocksSaved();
-        markConfigsSaved();
+        await finalizeProjectLoad(datablockFiles, configFiles);
 
     } catch (err) {
         if (err.name !== 'AbortError') {
@@ -80,6 +77,52 @@ window.openProject = async function() {
         }
     }
 };
+
+async function finalizeProjectLoad(datablockFiles, configFiles) {
+    if (datablockFiles.length > 0) {
+        await importDatablocks(datablockFiles);
+    }
+    if (configFiles.length > 0) {
+        await importConfigs(configFiles);
+    }
+    
+    markDatablocksSaved();
+    markConfigsSaved();
+}
+
+document.getElementById('project-upload').addEventListener('change', async (event) => {
+    const files = Array.from(event.target.files);
+    if (files.length === 0) return;
+
+    if (!confirm("Opening a project will clear the currently opened project. It is recommended to first download a local copy of the project so it can be restored. Continue?")) {
+        event.target.value = "";
+        return;
+    }
+
+    resetToVanilla();
+    clearConfigs();
+
+    const datablockFiles = [];
+    const configFiles = [];
+
+    for (const file of files) {
+        const pathParts = file.webkitRelativePath.split('/');
+        // pathParts[0] is the root folder name
+        if (pathParts.length === 2 && file.name.endsWith('.json')) {
+            datablockFiles.push(file);
+        } else {
+            const customIdx = pathParts.findIndex(p => p.toLowerCase() === 'custom');
+            if (customIdx === 1 && file.name.endsWith('.json')) {
+                // We want the path starting from 'Custom/...'
+                file.fullPath = pathParts.slice(customIdx).join('/');
+                configFiles.push(file);
+            }
+        }
+    }
+
+    await finalizeProjectLoad(datablockFiles, configFiles);
+    event.target.value = "";
+});
 
 async function scanConfigFolder(dirHandle, fileList, currentPath) {
     for await (const entry of dirHandle.values()) {

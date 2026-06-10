@@ -8,6 +8,7 @@ const DATABLOCKS_FOLDER = "public/vanilla/datablocks/";
 let activeNode = null; // { filename: '...', index: 0 }
 const currentData = new Map();
 const vanillaData = new Map();
+const parsedVanillaData = new Map();
 const editedDatablocks = new Set();
 const unsavedDatablocks = new Set();
 const savedSnapshots = new Map();
@@ -50,7 +51,8 @@ export function setDatablockState(state) {
 
 export function getDatablockData(name) {
     if (!name.endsWith(".json")) name += ".json";
-    return currentData.get(name);
+    if (currentData.has(name)) return currentData.get(name);
+    return parsedVanillaData.get(name);
 }
 
 export function getLinkages() {
@@ -304,6 +306,20 @@ async function openBlock(filename, index) {
     const block = data.Blocks[index];
     const schema = await loadSchema(filename);
 
+    // Pre-fetch relevant vanilla data for dropdowns
+    const datablockType = filename.replace(".json", "");
+    const relevantLinkages = linkages[datablockType] || {};
+    const targetBlocks = new Set(Object.values(relevantLinkages).map(l => typeof l === 'string' ? l : l.block));
+    
+    // Add assumptions too
+    if (linkages.Assumptions) {
+        for (const target of Object.values(linkages.Assumptions)) {
+            targetBlocks.add(target);
+        }
+    }
+    
+    await Promise.all(Array.from(targetBlocks).map(name => fetchVanillaData(name + ".json")));
+
     const header = renderDatablockHeader(filename, index);
     
     const controls = header.querySelector("div:last-child");
@@ -468,6 +484,7 @@ async function fetchVanillaData(filename) {
         const datablock = parseJSONC(text);
         const stringified = JSON.stringify(datablock, null, 4);
         vanillaData.set(filename, stringified);
+        parsedVanillaData.set(filename, datablock);
         return stringified;
     } catch (e) {
         console.error(`Failed to load vanilla data for ${filename}`, e);

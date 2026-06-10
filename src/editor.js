@@ -185,6 +185,15 @@ const COMMON_TYPES = {
     }
 };
 
+function getEnumName(schemaNode) {
+    if (!schemaNode) return null;
+    let name = schemaNode.baseType || schemaNode.specialType;
+    if (name && name.startsWith("List<")) {
+        name = name.substring(5, name.length - 1);
+    }
+    return name;
+}
+
 function getSchemaChildren(schemaNode) {
     if (!schemaNode) return {};
     let children = schemaNode.children ? schemaNode.children : {};
@@ -281,6 +290,7 @@ function renderLeaf(key, value, currentPath, cleanPath, schemaNode, isParentArra
         nodeEl.appendChild(label);
     }
 
+    const enumName = getEnumName(schemaNode);
     const isEnum = schemaNode && schemaNode.specialType === "enum";
     const isBoolean = typeof value === "boolean" || (schemaNode && schemaNode.type === "Boolean");
 
@@ -294,7 +304,7 @@ function renderLeaf(key, value, currentPath, cleanPath, schemaNode, isParentArra
 
     if (linkage && state.getDatablockData) {
         renderLinkageSelect(nodeEl, data, key, value, linkage, state);
-    } else if (isEnum && state.enums && state.enums[schemaNode.baseType || schemaNode.specialType]) {
+    } else if (isEnum && state.enums && state.enums[enumName]) {
         renderEnumSelect(nodeEl, data, key, value, schemaNode, state);
     } else if (isBoolean) {
         renderBooleanSelect(nodeEl, data, key, value, state);
@@ -468,21 +478,23 @@ function renderLinkageSelect(container, data, key, value, linkage, state) {
 }
 
 function renderEnumSelect(container, data, key, value, schemaNode, state) {
-    const enumName = schemaNode.baseType || schemaNode.specialType;
+    const enumName = getEnumName(schemaNode);
     const enumValues = state.enums[enumName];
     const select = document.createElement("select");
     
     let valueFound = false;
-    enumValues.forEach(ev => {
-        const option = document.createElement("option");
-        option.value = ev.name;
-        option.textContent = ev.name;
-        if (String(value) === String(ev.name) || String(value) === String(ev.value)) {
-            option.selected = true;
-            valueFound = true;
-        }
-        select.appendChild(option);
-    });
+    if (enumValues) {
+        enumValues.forEach(ev => {
+            const option = document.createElement("option");
+            option.value = ev.name;
+            option.textContent = ev.name;
+            if (String(value) === String(ev.name) || String(value) === String(ev.value)) {
+                option.selected = true;
+                valueFound = true;
+            }
+            select.appendChild(option);
+        });
+    }
 
     const customOption = document.createElement("option");
     customOption.value = "__custom__";
@@ -583,6 +595,9 @@ function getSchemaNode(schema, path) {
             if (current.type && current.type.startsWith("List<")) {
                 const innerType = current.type.substring(5, current.type.length - 1);
                 current = { ...current, type: innerType, children: getSchemaChildren({ type: innerType, children: current.children }) };
+                if (current.specialType === "enum" && current.baseType && current.baseType.startsWith("List<")) {
+                    current.baseType = current.baseType.substring(5, current.baseType.length - 1);
+                }
             }
             continue;
         }
@@ -620,7 +635,7 @@ export function createDefaultValue(schemaNode, state, path = "") {
     if (["Int32", "UInt32", "Single", "Double", "Int16", "UInt16", "Byte"].includes(type)) return 0;
 
     if (schemaNode.specialType === "enum") {
-        const enumName = schemaNode.baseType || schemaNode.specialType;
+        const enumName = getEnumName(schemaNode);
         const enums = state.enums?.[enumName];
         return enums?.length > 0 ? enums[0].name : "";
     }
@@ -655,7 +670,7 @@ export function createDefaultElement(schemaNode, state, path = "", existingData 
         if (innerType === "Boolean") return false;
         if (["Int32", "UInt32", "Single", "Double", "Int16", "UInt16", "Byte"].includes(innerType)) return 0;
         if (schemaNode.specialType === "enum") {
-            const enumName = schemaNode.baseType || schemaNode.specialType;
+            const enumName = getEnumName(schemaNode);
             const enums = state.enums?.[enumName];
             return enums?.length > 0 ? enums[0].name : "";
         }

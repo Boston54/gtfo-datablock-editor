@@ -127,9 +127,6 @@
     "WaveRoleMiniBoss": "EnemyDataBlock",
     "WaveRoleBoss": "EnemyDataBlock"
   },
-  "SurvivalWaveSettingsDataBlock": {
-    "m_populationFilter": "SurvivalWavePopulationDataBlock"
-  },
   "ConsumableDistributionDataBlock": {
     "SpawnData.ItemID": "ItemDataBlock"
   },
