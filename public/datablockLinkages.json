@@ -89,7 +89,9 @@
     "Gather_ItemId": "ItemDataBlock",
     "Retrieve_Items": "ItemDataBlock",
     "WavesOnEvents.SurvivalWaveSettings": "SurvivalWaveSettingsDataBlock",
-    "WavesOnEvents.SurvivalWavePopulation": "SurvivalWavePopulationDataBlock"
+    "WavesOnEvents.SurvivalWavePopulation": "SurvivalWavePopulationDataBlock",
+    "ActivateHSU_ItemFromStart": "ItemDataBlock",
+    "ActivateHSU_ItemAfterActivation": "ItemDataBlock"
   },
   "EnemyDataBlock": {
     "DetectionDataId": "EnemyDetectionDataBlock",
@@ -118,6 +120,22 @@
   "ItemDataBlock": {
     "FPSSettings": "ItemFPSSettingsDataBlock"
   },
+  "SurvivalWavePopulationDataBlock": {
+    "WaveRoleWeakling": "EnemyDataBlock",
+    "WaveRoleStandard": "EnemyDataBlock",
+    "WaveRoleSpecial": "EnemyDataBlock",
+    "WaveRoleMiniBoss": "EnemyDataBlock",
+    "WaveRoleBoss": "EnemyDataBlock"
+  },
+  "SurvivalWaveSettingsDataBlock": {
+    "m_populationFilter": "SurvivalWavePopulationDataBlock"
+  },
+  "ConsumableDistributionDataBlock": {
+    "SpawnData.ItemID": "ItemDataBlock"
+  },
+  "BigPickupDistributionDataBlock": {
+    "SpawnData.ItemID": "ItemDataBlock"
+  },
   "Assumptions": {
     "ChainPuzzle": "ChainedPuzzleDataBlock",
     "ChainedPuzzle": "ChainedPuzzleDataBlock",
@@ -125,6 +143,8 @@
     "FogSetting": "FogSettingsDataBlock",
     "FogSettings": "FogSettingsDataBlock",
     "LightSetting": "LightSettingsDataBlock",
-    "LightSettings": "LightSettingsDataBlock"
+    "LightSettings": "LightSettingsDataBlock",
+    "ExcludeEnemyID": "EnemyDataBlock",
+    "IncludeEnemyID": "EnemyDataBlock"
   }
 }

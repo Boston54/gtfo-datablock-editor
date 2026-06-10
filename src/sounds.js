@@ -34,16 +34,20 @@ export async function initSounds() {
         renderSounds(sounds, container);
 
         // Setup search
+        let debounceTimer;
         const searchInput = document.getElementById('sounds-search');
         if (searchInput) {
             searchInput.oninput = () => {
-                const query = searchInput.value.toLowerCase();
-                const filtered = sounds.filter(s => 
-                    s.id.toLowerCase().includes(query) || 
-                    s.name.toLowerCase().includes(query) || 
-                    s.path.toLowerCase().includes(query)
-                );
-                renderSounds(filtered, container);
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    const query = searchInput.value.toLowerCase();
+                    const filtered = sounds.filter(s => 
+                        s.id.toLowerCase().includes(query) || 
+                        s.name.toLowerCase().includes(query) || 
+                        s.path.toLowerCase().includes(query)
+                    );
+                    renderSounds(filtered, container);
+                }, 150);
             };
         }
 
@@ -61,6 +65,9 @@ function renderSounds(sounds, container) {
         return;
     }
 
+    const MAX_VISIBLE = 200;
+    const toRender = sounds.slice(0, MAX_VISIBLE);
+
     const table = document.createElement('table');
     table.className = 'sounds-table';
 
@@ -76,7 +83,7 @@ function renderSounds(sounds, container) {
     table.appendChild(thead);
 
     const tbody = document.createElement('tbody');
-    sounds.forEach(sound => {
+    toRender.forEach(sound => {
         const row = document.createElement('tr');
         [sound.id, sound.name, sound.path].forEach(text => {
             const td = document.createElement('td');
@@ -87,4 +94,14 @@ function renderSounds(sounds, container) {
     });
     table.appendChild(tbody);
     container.appendChild(table);
+
+    if (sounds.length > MAX_VISIBLE) {
+        const more = document.createElement('div');
+        more.style.padding = '10px';
+        more.style.textAlign = 'center';
+        more.style.color = 'var(--text-secondary)';
+        more.style.fontSize = '0.9em';
+        more.textContent = `Showing first ${MAX_VISIBLE} of ${sounds.length} results. Please refine your search to see more.`;
+        container.appendChild(more);
+    }
 }

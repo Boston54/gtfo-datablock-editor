@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>GTFO Map Editor</title>
+    <title>GTFO Rundown Editor</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -11,9 +11,16 @@
         <h1 class="title">GTFO Rundown Editor</h1>
         <h2 class="subtitle">by Boston54</h2>
     </div>
+    <div id="top-bar">
+        <button onclick="newProject()" class="top-button">Create New Project</button>
+        <button onclick="openProject()" class="top-button">Open Project</button>
+        <button onclick="saveProject()" class="top-button success">Save Project</button>
+        <button onclick="downloadProject()" class="top-button success">Download Project</button>
+    </div>
     <div id="main-tabs">
         <button onclick="showTab('home')" class="active">Home</button>
-        <button onclick="showTab('rundown-editor')">Rundown Editor</button>
+        <button onclick="showTab('datablock-editor')">Datablock Editor</button>
+        <button onclick="showTab('config-editor')">Config Editor</button>
         <button onclick="showTab('geomorphs')">Geomorphs</button>
         <button onclick="showTab('sounds')">Sounds</button>
     </div>
@@ -23,35 +30,99 @@
         <div id="home" class="tab-page active">
             <h2>Home</h2>
             <p>
-                Welcome to the dev build! This is a heavily work-in-progress tool for creating GTFO rundowns.<br>
+                Welcome to the dev build! This is a heavily work-in-progress tool for creating GTFO rundowns, or other datablock-based
+                projects.<br>
                 I fully expect that you will encounter bugs, errors, and unexpected behaviour.<br>
                 If something feels not quite right or you have feature suggestions, please send me a message on discord (boston54).
             </p>
+            <p>
+                To get started, you can either start a new project from scratch or import an existing project (datablocks).
+            </p>
+            <h3>Starting a New Project</h3>
+            <p>
+                When starting a new project, you can go to the <code>Datablock Editor</code> and click on the <code>+Datablock</code> button
+                on the left panel to build a new datablock. This will prompt you to either use a vanilla datablock as a template, or start a
+                new one from scratch. If you are just learning datablock development, it is recommended to start with a vanilla datablock to
+                familiarise yourself with the structure and functionality of datablocks.
+            </p>
+            <p>
+                It can also be important to note that many datablocks are designed to work together, and in most cases, datablocks will rely
+                on the data that is present in other datablocks to function properly. Therefore, for the majority of the datablocks, you will
+                want to edit the vanilla datablocks instead of building your own ones from scratch. This is especially important for blocks
+                such as the <code>TextDataBlock</code> which handles the on-screen text that appears throughout the entire game.
+            </p>
+            <h3>Importing a Project</h3>
+            <p>
+                Projects can be imported into the editor by clicking on the <code>Open Project</code> button at the top of the page, and
+                selecting the root folder for your plugin (the folder that contains your datablocks). This will load all of the datablocks, as
+                well as any config files present in the <code>Custom</code> folder.
+            </p>
+            <h3>Modded Datablocks Support</h3>
+            <p>
+                The editor loosely supports modded datablock values from mods such as AdvancedWardenObjective, but more support is planned for
+                the future.
+            </p>
+            <p>
+                To use object keys that are not present in the vanilla datablocks, you can add your own entries to objects by
+                clicking the <code>Add Object</code>, <code>Add Value</code>, <code>Add List</code> or <code>Add Raw List</code> buttons at the bottom of the object.
+            </p>
+            <p>
+                To use object values that are not present in the vanilla datablocks, you can select the <code>Custom...</code> option from the
+                dropdown menu and then enter any value.
+            </p>
+            <h3>Resources</h3>
+            <p>
+                This website also features some helpful resources for editing datablocks, including a list of the game's geomorphs (tiles) with
+                screenshots of what they look like, and a searchable list of all of the game's sound effects.
+            </p>
+
         </div>
 
-        <!-- Rundown Editor Tab -->
-        <div id="rundown-editor" class="tab-page">
-            <div id="editor-buttons">
-                <button onclick="newProject()" class="editor-buttons danger">New Project</button>
-                <button onclick="uploadDatablocks()" class="editor-buttons">Upload Datablocks</button>
-                <button onclick="downloadAll()" class="editor-buttons success">Download All (ZIP)</button>
-                <input type="file" id="datablock-upload" multiple accept=".json" style="display:none">
-                <button onclick="showAddDatablockForm()" class="editor-buttons primary">Add</button>
-                <button onclick="deleteDatablock()" class="editor-buttons danger">Delete</button>
-
-                <div id="add-datablock-form" hidden>
-                    <select id="datablock-select"></select>
-
-                    <select id="datablock-start-mode">
-                        <option value="vanilla">Use vanilla template</option>
-                        <option value="blank">Start blank</option>
-                    </select>
-
-                    <button onclick="addDatablock()">Create</button>
+        <!-- Datablock Editor Tab -->
+        <div id="datablock-editor" class="tab-page">
+            <div class="side-editor-content">
+                <div class="side-sidebar">
+                    <div class="side-sidebar-header">
+                        <div class="side-sidebar-header-row">
+                            <button onclick="uploadDatablocks()" class="editor-buttons" title="Upload Datablock JSON files">Upload</button>
+                            <button onclick="downloadAll()" class="editor-buttons success" title="Download all edited blocks as ZIP">Download All</button>
+                        </div>
+                        <button onclick="showAddDatablockForm()" class="editor-buttons primary" title="Add Datablock">+ Datablock</button>
+                    </div>
+                    <div id="add-datablock-form" class="sidebar-form" hidden>
+                        <select id="datablock-select"></select>
+                        <select id="datablock-start-mode">
+                            <option value="vanilla">Use vanilla template</option>
+                            <option value="blank">Start blank</option>
+                        </select>
+                        <button onclick="addDatablock()">Create</button>
+                    </div>
+                    <div class="side-tree-container" id="datablock-tree-container"></div>
                 </div>
+                <div class="side-main-area" id="datablock-main-area"></div>
             </div>
-            <div id="editor-tab-buttons"></div>
-            <div id="editor-tab-pages"></div>
+            <input type="file" id="datablock-upload" multiple accept=".json" style="display:none">
+        </div>
+
+        <!-- Config Editor Tab -->
+        <div id="config-editor" class="tab-page">
+            <div class="side-editor-content">
+                <div class="side-sidebar">
+                    <div class="side-sidebar-header">
+                        <div class="side-sidebar-header-row">
+                            <button onclick="uploadConfigs()" class="editor-buttons">Upload</button>
+                            <button onclick="downloadConfigs()" class="editor-buttons success">Download All</button>
+                        </div>
+                        <div class="side-sidebar-header-row">
+                            <button id="add-config-file" class="editor-buttons primary">+ File</button>
+                            <button id="add-config-folder" class="editor-buttons primary">+ Folder</button>
+                        </div>
+                    </div>
+                    <div class="side-tree-container" id="config-tree-container"></div>
+                </div>
+                <div class="side-main-area" id="config-main-area"></div>
+            </div>
+            <input type="file" id="config-upload" multiple accept=".json" style="display:none">
         </div>
 
         <!-- Geomorphs Tab -->
@@ -60,7 +131,7 @@
             <p>
                 This resource can be used as a reference for assigning <code>CustomGeomorph</code> in <code>LevelLayoutDataBlock</code> blocks, or <code>Prefab</code> in <code>ComplexResourceSetDataBlock</code> blocks.
             </p>
-            <p>All the information on this page was extracted from <a href="https://docs.google.com/document/d/1iSYUASlQSaP6l7PD3HszsXSAxJ-wb8MAVwYxb9xW92c/edit?tab=t.0">All Geomorphs</a>.<br>Credit goes to ProjectZaero as the creator and GhostlyMire as the primary maintainer of the above document.</p>
+            <p>All the information on this page was extracted from <a href="https://docs.google.com/document/d/1iSYUASlQSaP6l7PD3HszsXSAxJ-wb8MAVwYxb9xW92c/edit?tab=t.0">All Geomorphs</a>.<br>Credit goes to <b>ProjectZaero</b> as the creator and <b>GhostlyMire</b> as the primary maintainer of the above document.</p>
             <div id="geomorph-tabs-root" class="sub-tabs"></div>
             <div id="geomorph-content-root"></div>
         </div>

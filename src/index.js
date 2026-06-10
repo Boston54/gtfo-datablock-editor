@@ -1,6 +1,8 @@
-import {addNewDatablock, deleteCurrentDatablock, initDatablocks, importDatablocks, closeAllDatablocks, downloadAllAsZip} from './datablocks.js';
+import {addNewDatablock, deleteCurrentDatablock, initDatablocks, importDatablocks, downloadAllAsZip, resetToVanilla, downloadProjectAsZip, getDatablockState, setDatablockState, markDatablocksSaved} from './datablocks.js';
 import {initGeomorphs} from './geomorphs.js';
 import {initSounds} from './sounds.js';
+import {initConfigs, clearConfigs, downloadConfigsAsZip, getConfigState, setConfigState, markConfigsSaved, importConfigs} from './configs.js';
+import {saveToIndexedDB, loadFromIndexedDB, clearIndexedDB} from './persistence.js';
 
 function tabsHelper(tabId, pageSelector, buttonSelector) {
     const targetPage = document.getElementById(tabId);
@@ -31,8 +33,63 @@ window.showTab = function(tabId) {
 // Editor Tab
 
 window.newProject = function() {
-    if (confirm("Are you sure you want to start a new project? This will close all open datablocks.")) {
-        closeAllDatablocks();
+    if (confirm("Are you sure you want to start a new project? This will clear all current unsaved changes.")) {
+        resetToVanilla();
+        clearConfigs();
+        clearIndexedDB();
+    }
+}
+
+window.openProject = async function() {
+    try {
+        const directoryHandle = await window.showDirectoryPicker();
+        
+        if (!confirm("Opening a project will clear the currently opened project. It is recommended to first download a local copy of the project so it can be restored. Continue?")) {
+            return;
+        }
+
+        resetToVanilla();
+        clearConfigs();
+
+        const datablockFiles = [];
+        const configFiles = [];
+
+        for await (const entry of directoryHandle.values()) {
+            if (entry.kind === 'file' && entry.name.endsWith('.json')) {
+                const file = await entry.getFile();
+                datablockFiles.push(file);
+            } else if (entry.kind === 'directory' && (entry.name === 'Custom' || entry.name === 'custom')) {
+                await scanConfigFolder(entry, configFiles, entry.name);
+            }
+        }
+
+        if (datablockFiles.length > 0) {
+            await importDatablocks(datablockFiles);
+        }
+        if (configFiles.length > 0) {
+            await importConfigs(configFiles);
+        }
+        
+        markDatablocksSaved();
+        markConfigsSaved();
+
+    } catch (err) {
+        if (err.name !== 'AbortError') {
+            console.error(err);
+            alert("Failed to open project: " + err.message);
+        }
+    }
+};
+
+async function scanConfigFolder(dirHandle, fileList, currentPath) {
+    for await (const entry of dirHandle.values()) {
+        if (entry.kind === 'file' && entry.name.endsWith('.json')) {
+            const file = await entry.getFile();
+            file.fullPath = currentPath + "/" + entry.name;
+            fileList.push(file);
+        } else if (entry.kind === 'directory') {
+            await scanConfigFolder(entry, fileList, currentPath + "/" + entry.name);
+        }
     }
 }
 
@@ -44,6 +101,18 @@ document.getElementById('datablock-upload').addEventListener('change', async (ev
     const files = event.target.files;
     if (files.length > 0) {
         await importDatablocks(files);
+        event.target.value = "";
+    }
+});
+
+window.uploadConfigs = function() {
+    document.getElementById('config-upload').click();
+};
+
+document.getElementById('config-upload').addEventListener('change', async (event) => {
+    const files = event.target.files;
+    if (files.length > 0) {
+        await importConfigs(files);
         event.target.value = "";
     }
 });
@@ -68,12 +137,51 @@ window.downloadAll = function() {
     downloadAllAsZip();
 }
 
-// Geomorph Tabs
+window.downloadConfigs = function() {
+    downloadConfigsAsZip();
+}
+
+window.downloadProject = function() {
+    downloadProjectAsZip();
+}
+
+window.saveProject = async function() {
+    const state = {
+        activeTab: document.querySelector('.tab-page.active')?.id || 'home',
+        datablocks: getDatablockState(),
+        configs: getConfigState()
+    };
+    try {
+        await saveToIndexedDB(state);
+        markDatablocksSaved();
+        markConfigsSaved();
+    } catch (err) {
+        console.error(err);
+        alert("Failed to save project. Download a local copy instead to avoid losing your changes: " + err.message);
+    }
+}
+
+// Main
 
 async function main() {
-    await initDatablocks();
-    await initGeomorphs();
-    await initSounds();
+    await Promise.all([
+        initDatablocks(),
+        initGeomorphs(),
+        initSounds(),
+        initConfigs()
+    ]);
+
+    // Restore state if available
+    try {
+        const savedState = await loadFromIndexedDB();
+        if (savedState) {
+            console.log("Restoring saved state...");
+            if (savedState.datablocks) setDatablockState(savedState.datablocks);
+            if (savedState.configs) setConfigState(savedState.configs);
+        }
+    } catch (err) {
+        console.warn("Failed to load saved state:", err);
+    }
 }
 
 main();

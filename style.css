@@ -13,6 +13,8 @@
     --success-hover: #388e3c;
     --danger-color: #a1260d;
     --danger-hover: #be3118;
+    --status-unsaved: #4caf50;
+    --status-saved: #569cd6;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --font-mono: 'Consolas', 'Courier New', monospace;
 }
@@ -48,6 +50,41 @@ body {
     background: #444;
 }
 
+#top-bar {
+    background: #1a1a1a;
+    padding: 8px 20px;
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.top-button {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.top-button:hover {
+    background: #333;
+    color: #fff;
+    border-color: #666;
+}
+
+.top-button.success {
+    border-color: #2e7d32;
+    color: #4caf50;
+}
+
+.top-button.success:hover {
+    background: #1b5e20;
+    color: #fff;
+    border-color: #2e7d32;
+}
+
 #header {
     padding: 20px;
     background: var(--bg-header);
@@ -70,9 +107,6 @@ body {
     font-weight: normal;
 }
 
-#main-tabs,
-#json-tabs,
-#editor-tab-buttons,
 .sub-tabs {
     display: flex;
     flex-wrap: wrap;
@@ -104,43 +138,28 @@ button.active {
     border-bottom: 2px solid var(--accent-color);
 }
 
-#main-tabs button, #json-tabs button, #editor-tab-buttons button {
+#main-tabs button {
     border-radius: 0;
     margin-right: 1px;
 }
 
 #main-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    flex-shrink: 0;
     background: var(--bg-main);
     padding: 10px 20px 0 20px;
     border-bottom: 1px solid var(--border-color);
 }
 
-#editor-tab-buttons {
-    background: var(--bg-main);
-    padding: 5px 10px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-#editor-tab-buttons button {
-    background: #2d2d2d;
-    min-width: 180px;
-    max-width: 400px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border-right: 1px solid var(--border-color);
-}
-
-#editor-tab-buttons button[data-tab-id].active {
-    background: var(--bg-panel);
-}
 
 #content {
     padding: 20px;
     min-height: 250px;
 }
 
-#editor-buttons, #geomorph-buttons {
+#editor-buttons, #geomorph-buttons, #config-buttons {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -161,12 +180,6 @@ button.active {
 
 .editor-buttons:hover {
     background: #444;
-}
-
-.editor-buttons.active {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #fff;
 }
 
 .editor-buttons.primary {
@@ -227,7 +240,7 @@ button.active {
     background: var(--accent-hover);
 }
 
-.tab-page h2 {
+.tab-page h2, h3 {
     color: #fff;
     margin-top: 0;
     border-bottom: 1px solid var(--border-color);
@@ -235,15 +248,12 @@ button.active {
 }
 
 .tab-page,
-.json-page,
 .geomorph-tab-page {
     display: none;
     padding: 20px 0;
 }
 
-.tab-page.active,
-.json-page.active,
-#sounds.active {
+.tab-page.active {
     display: block;
 }
 
@@ -264,7 +274,7 @@ button.active {
 #geomorphs.active {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 10px);
     min-height: 0;
 }
 
@@ -401,7 +411,7 @@ pre {
 }
 
 .virtual-json-scrollbox {
-    height: 600px;
+    height: calc(100vh - 250px);
     overflow-y: auto;
     border: 1px solid var(--border-color);
     position: relative;
@@ -437,29 +447,11 @@ pre {
     right: 0;
 }
 
-.editor-tab-page {
-    display: none;
-}
-
-.editor-tab-page.active {
-    display: block;
-}
 
 #add-datablock-form[hidden] {
     display: none;
 }
 
-.editor-container {
-    display: none;
-    flex-direction: column;
-    height: calc(100vh - 180px);
-    border: 1px solid var(--border-color);
-    background: var(--bg-panel);
-}
-
-.editor-container.active {
-    display: flex;
-}
 
 .editor-block-header {
     padding: 10px 20px;
@@ -515,6 +507,12 @@ pre {
 
 .tree-header:hover {
     background: #2a2d2e;
+}
+
+.tree-leaf {
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
 }
 
 .editor-detail-pane input,
@@ -585,6 +583,11 @@ pre {
     font-size: 13px;
     width: 150px;
     border-radius: 2px;
+}
+
+.tree-input-custom {
+    width: 200px !important;
+    margin-left: 5px !important;
 }
 
 .tree-add-custom-row {
@@ -688,6 +691,148 @@ pre {
 
 .sounds-table tr:hover {
     background: var(--bg-input);
+}
+
+#config-editor.tab-page.active,
+#datablock-editor.tab-page.active {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 180px);
+    padding: 0;
+    overflow: hidden;
+}
+
+.side-editor-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.side-sidebar {
+    width: 250px;
+    background: var(--bg-panel);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.side-main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg-main);
+}
+
+.side-sidebar-header {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.side-sidebar-header-row {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
+
+.side-sidebar-header button {
+    flex: 1;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    border-bottom: none;
+    margin: 0;
+}
+
+.side-tree-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+
+.side-tree-node {
+    padding: 6px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 13px;
+    position: relative;
+}
+
+.side-tree-node:hover {
+    background: var(--bg-secondary);
+}
+
+.side-tree-node.active {
+    background: var(--bg-input);
+    border-left: 3px solid var(--accent-color);
+    padding-left: 9px;
+}
+
+.side-tree-node .icon {
+    width: 16px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.side-tree-node .node-delete {
+    position: absolute;
+    right: 10px;
+    color: var(--text-secondary);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.side-tree-node:hover .node-delete {
+    opacity: 1;
+}
+
+.side-tree-node .node-delete:hover {
+    color: var(--danger-color);
+}
+
+.side-tree-node-children {
+    padding-left: 12px;
+}
+
+.sidebar-form {
+    padding: 10px;
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-form select {
+    width: 100%;
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.sidebar-form button {
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sidebar-form button:hover {
+    background: var(--accent-hover);
 }
 
 .editor-empty-prompt {

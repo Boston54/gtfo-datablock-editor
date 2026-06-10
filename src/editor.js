@@ -68,24 +68,85 @@ export function renderTree(container, data, path = "", state) {
         container.appendChild(nodeEl);
     }
 
-    if (data && typeof data === 'object' && !isDataArray) {
+    if (data && typeof data === 'object') {
         const addRow = document.createElement("div");
         addRow.className = "tree-add-custom-row";
-        
-        const addVBtn = document.createElement("button");
-        addVBtn.className = "add-entry-button";
-        addVBtn.textContent = "+ Add Value";
-        addVBtn.onclick = () => addCustomField(data, state, "");
-        addRow.appendChild(addVBtn);
 
-        const addLBtn = document.createElement("button");
-        addLBtn.className = "add-entry-button";
-        addLBtn.textContent = "+ Add List";
-        addLBtn.style.marginLeft = "5px";
-        addLBtn.onclick = () => addCustomField(data, state, []);
-        addRow.appendChild(addLBtn);
+        if (!isDataArray) {
+            const addOBtn = document.createElement("button");
+            addOBtn.className = "add-entry-button";
+            addOBtn.textContent = "+ Add Object";
+            addOBtn.onclick = () => addCustomField(data, state, {});
+            addRow.appendChild(addOBtn);
 
-        container.appendChild(addRow);
+            const addVBtn = document.createElement("button");
+            addVBtn.className = "add-entry-button";
+            addVBtn.textContent = "+ Add Value";
+            addVBtn.style.marginLeft = "5px";
+            addVBtn.onclick = () => addCustomField(data, state, "");
+            addRow.appendChild(addVBtn);
+
+            const addLBtn = document.createElement("button");
+            addLBtn.className = "add-entry-button";
+            addLBtn.textContent = "+ Add List";
+            addLBtn.style.marginLeft = "5px";
+            addLBtn.onclick = () => addCustomField(data, state, []);
+            addRow.appendChild(addLBtn);
+
+            container.appendChild(addRow);
+        } else {
+            if (!currentSchemaNode || (currentSchemaNode.type && !currentSchemaNode.type.startsWith("List<"))) {
+                const addOBtn = document.createElement("button");
+                addOBtn.className = "add-entry-button";
+                addOBtn.textContent = "+ Add Object";
+                addOBtn.onclick = () => {
+                    data.push({});
+                    updateDetailPane(state);
+                    const key = path.split('.').pop();
+                    if (state.onUpdate) state.onUpdate(key, data, data);
+                };
+                addRow.appendChild(addOBtn);
+
+                const addVBtn = document.createElement("button");
+                addVBtn.className = "add-entry-button";
+                addVBtn.textContent = "+ Add Value";
+                addVBtn.style.marginLeft = "5px";
+                addVBtn.onclick = () => {
+                    data.push("");
+                    updateDetailPane(state);
+                    const key = path.split('.').pop();
+                    if (state.onUpdate) state.onUpdate(key, data, data);
+                };
+                addRow.appendChild(addVBtn);
+
+                const addLBtn = document.createElement("button");
+                addLBtn.className = "add-entry-button";
+                addLBtn.textContent = "+ Add List";
+                addLBtn.style.marginLeft = "5px";
+                addLBtn.onclick = () => {
+                    data.push([]);
+                    updateDetailPane(state);
+                    const key = path.split('.').pop();
+                    if (state.onUpdate) state.onUpdate(key, data, data);
+                };
+                addRow.appendChild(addLBtn);
+
+            } else {
+                const addBtn = document.createElement("button");
+                addBtn.className = "add-entry-button";
+                addBtn.textContent = "+";
+                addBtn.title = "Add new entry";
+                addBtn.onclick = () => {
+                    const newItem = createDefaultElement(currentSchemaNode, state, path, data);
+                    data.push(newItem);
+                    updateDetailPane(state);
+                    const key = path.split('.').pop();
+                    if (state.onUpdate) state.onUpdate(key, data, data);
+                };
+                addRow.appendChild(addBtn);
+            }
+            container.appendChild(addRow);
+        }
     }
 }
 
@@ -166,22 +227,6 @@ function renderBranch(key, value, currentPath, cleanPath, schemaNode, isActually
         header.appendChild(typeHint);
     }
 
-    if (isActuallyArray || isSchemaList) {
-        const addBtn = document.createElement("button");
-        addBtn.className = "add-entry-button";
-        addBtn.textContent = "+";
-        addBtn.title = "Add new entry";
-        addBtn.onclick = (e) => {
-            e.stopPropagation();
-            if (!data[key] || !Array.isArray(data[key])) data[key] = [];
-            const newItem = createDefaultElement(schemaNode, state, currentPath);
-            data[key].push(newItem);
-            state.expandedPaths.add(currentPath);
-            updateDetailPane(state);
-            if (state.onUpdate) state.onUpdate(key, data[key], data[key]);
-        };
-        header.appendChild(addBtn);
-    }
 
     header.onclick = (e) => {
         e.stopPropagation();
@@ -215,6 +260,7 @@ function renderBranch(key, value, currentPath, cleanPath, schemaNode, isActually
 
 function renderLeaf(key, value, currentPath, cleanPath, schemaNode, isParentArray, data, state, blockDefs, isCustom) {
     const nodeEl = document.createElement("div");
+    nodeEl.className = "tree-leaf";
     
     if (isCustom) {
         const keyInput = document.createElement("input");
@@ -366,6 +412,8 @@ function renderLinkageSelect(container, data, key, value, linkage, state) {
     if (String(value) === "0" || value === undefined || value === null) noneOption.selected = true;
     select.appendChild(noneOption);
 
+    let valueFound = (String(value) === "0" || value === undefined || value === null);
+
     if (targetData && targetData.Blocks) {
         targetData.Blocks.forEach(block => {
             const option = document.createElement("option");
@@ -373,19 +421,50 @@ function renderLinkageSelect(container, data, key, value, linkage, state) {
             option.value = targetVal;
             const displayName = block[linkage.display] || "Unnamed";
             option.textContent = `${displayName} (${targetVal})`;
-            if (String(value) === String(targetVal) && String(value) !== "0") option.selected = true;
+            if (String(value) === String(targetVal) && String(value) !== "0") {
+                option.selected = true;
+                valueFound = true;
+            }
             select.appendChild(option);
         });
     }
 
+    const customOption = document.createElement("option");
+    customOption.value = "__custom__";
+    customOption.textContent = "Custom...";
+    if (!valueFound) customOption.selected = true;
+    select.appendChild(customOption);
+
+    const customInput = document.createElement("input");
+    customInput.type = "text";
+    customInput.className = "tree-input-custom";
+    customInput.value = value !== undefined ? value : "";
+    customInput.style.display = valueFound ? "none" : "inline-block";
+
     select.onchange = (e) => {
+        if (e.target.value === "__custom__") {
+            customInput.style.display = "inline-block";
+        } else {
+            customInput.style.display = "none";
+            let val = e.target.value;
+            if (!isNaN(val) && val !== "") val = parseFloat(val);
+            const oldValue = data[key];
+            data[key] = val;
+            customInput.value = val;
+            if (state.onUpdate) state.onUpdate(key, val, oldValue);
+        }
+    };
+
+    customInput.onchange = (e) => {
         let val = e.target.value;
-        if (!isNaN(val)) val = parseFloat(val);
+        if (!isNaN(val) && val !== "") val = parseFloat(val);
         const oldValue = data[key];
         data[key] = val;
         if (state.onUpdate) state.onUpdate(key, val, oldValue);
     };
+
     container.appendChild(select);
+    container.appendChild(customInput);
 }
 
 function renderEnumSelect(container, data, key, value, schemaNode, state) {
@@ -393,20 +472,50 @@ function renderEnumSelect(container, data, key, value, schemaNode, state) {
     const enumValues = state.enums[enumName];
     const select = document.createElement("select");
     
+    let valueFound = false;
     enumValues.forEach(ev => {
         const option = document.createElement("option");
         option.value = ev.name;
         option.textContent = ev.name;
-        if (String(value) === String(ev.name) || String(value) === String(ev.value)) option.selected = true;
+        if (String(value) === String(ev.name) || String(value) === String(ev.value)) {
+            option.selected = true;
+            valueFound = true;
+        }
         select.appendChild(option);
     });
 
+    const customOption = document.createElement("option");
+    customOption.value = "__custom__";
+    customOption.textContent = "Custom...";
+    if (!valueFound && value !== undefined && value !== null) customOption.selected = true;
+    select.appendChild(customOption);
+
+    const customInput = document.createElement("input");
+    customInput.type = "text";
+    customInput.className = "tree-input-custom";
+    customInput.value = value !== undefined ? value : "";
+    customInput.style.display = valueFound ? "none" : "inline-block";
+
     select.onchange = (e) => {
+        if (e.target.value === "__custom__") {
+            customInput.style.display = "inline-block";
+        } else {
+            customInput.style.display = "none";
+            const oldValue = data[key];
+            data[key] = e.target.value;
+            customInput.value = e.target.value;
+            if (state.onUpdate) state.onUpdate(key, e.target.value, oldValue);
+        }
+    };
+
+    customInput.onchange = (e) => {
         const oldValue = data[key];
         data[key] = e.target.value;
         if (state.onUpdate) state.onUpdate(key, e.target.value, oldValue);
     };
+
     container.appendChild(select);
+    container.appendChild(customInput);
 }
 
 function renderBooleanSelect(container, data, key, value, state) {
@@ -519,8 +628,17 @@ export function createDefaultValue(schemaNode, state, path = "") {
     return "";
 }
 
-export function createDefaultElement(schemaNode, state, path = "") {
-    if (!schemaNode) return {};
+export function createDefaultElement(schemaNode, state, path = "", existingData = null) {
+    if (!schemaNode) {
+        if (Array.isArray(existingData) && existingData.length > 0) {
+            const first = existingData[0];
+            if (typeof first === 'object' && first !== null) return {};
+            if (typeof first === 'number') return 0;
+            if (typeof first === 'boolean') return false;
+            return "";
+        }
+        return {};
+    }
     const type = schemaNode.type || "";
 
     if (type.startsWith("List<")) {
@@ -544,4 +662,60 @@ export function createDefaultElement(schemaNode, state, path = "") {
         return "";
     }
     return createDefaultValue(schemaNode, state, path);
+}
+
+export function createVirtualJsonViewer(container, jsonObject) {
+    const lines = JSON.stringify(jsonObject, null, 2).split("\n");
+
+    const lineHeight = 20;
+    const bufferLines = 30;
+
+    container.replaceChildren();
+
+    const scrollBox = document.createElement("div");
+    scrollBox.classList.add("virtual-json-scrollbox");
+
+    const spacer = document.createElement("div");
+    spacer.classList.add("virtual-json-spacer");
+    spacer.style.height = `${lines.length * lineHeight}px`;
+
+    const lineNumbers = document.createElement("pre");
+    lineNumbers.classList.add("virtual-json-line-numbers");
+
+    const content = document.createElement("pre");
+    content.classList.add("virtual-json-content");
+
+    scrollBox.appendChild(spacer);
+    scrollBox.appendChild(lineNumbers);
+    scrollBox.appendChild(content);
+    container.appendChild(scrollBox);
+
+    function render() {
+        const startLine = Math.max(
+            0,
+            Math.floor(scrollBox.scrollTop / lineHeight) - bufferLines
+        );
+
+        const visibleLineCount =
+            Math.ceil(scrollBox.clientHeight / lineHeight) + bufferLines * 2;
+
+        const endLine = Math.min(lines.length, startLine + visibleLineCount);
+
+        const visibleLines = lines.slice(startLine, endLine);
+
+        const offsetY = startLine * lineHeight;
+
+        lineNumbers.style.transform = `translateY(${offsetY}px)`;
+        content.style.transform = `translateY(${offsetY}px)`;
+
+        lineNumbers.textContent = visibleLines
+            .map((_, index) => startLine + index + 1)
+            .join("\n");
+
+        content.textContent = visibleLines.join("\n");
+    }
+
+    scrollBox.addEventListener("scroll", render);
+
+    render();
 }
