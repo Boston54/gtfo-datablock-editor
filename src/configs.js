@@ -12,6 +12,7 @@ let activeNode = null;
 let viewMode = 'tree';
 const unsavedConfigs = new Set();
 const savedSnapshots = new Map();
+const jsonErrors = new WeakMap(); // node -> error message
 
 export function getConfigState() {
     // We need to strip parent references to avoid circularity for JSON serialization/storage
@@ -292,7 +293,7 @@ function openFile(node) {
     viewModeSelect.style.color = "var(--text-primary)";
     viewModeSelect.style.border = "1px solid #666";
     
-    ['Tree View', 'JSON View (readonly)'].forEach((mode, i) => {
+    ['Tree View', 'JSON View'].forEach((mode, i) => {
         const opt = document.createElement("option");
         opt.value = i === 0 ? 'tree' : 'block';
         opt.textContent = mode;
@@ -326,11 +327,35 @@ function openFile(node) {
     mainArea.appendChild(detailPane);
 
     if (viewMode === 'block') {
-        createVirtualJsonViewer(detailPane, node.content);
-    } else {
-        initTreeEditor(detailPane, node.content, null, null, null, null, null, null, null, () => {
-            updateUnsavedStatus(node);
+        createVirtualJsonViewer(detailPane, node.content, {
+            onUpdate: (parsed, error) => {
+                if (error) {
+                    jsonErrors.set(node, error);
+                } else {
+                    jsonErrors.delete(node);
+                    if (parsed && typeof parsed === 'object') {
+                        node.content = parsed;
+                        updateUnsavedStatus(node);
+                    } else {
+                        jsonErrors.set(node, "JSON must be an object or array");
+                    }
+                }
+            }
         });
+    } else {
+        const error = jsonErrors.get(node);
+        if (error) {
+            const errorEl = document.createElement("div");
+            errorEl.className = "json-error-message";
+            errorEl.textContent = `Invalid JSON detected in JSON view. Please fix it before using the tree view.\n\nError: ${error}`;
+            detailPane.appendChild(errorEl);
+        } else {
+            initTreeEditor(detailPane, node.content, null, {
+                onUpdate: () => {
+                    updateUnsavedStatus(node);
+                }
+            });
+        }
     }
 }
 

@@ -1,11 +1,5 @@
-LocalizedText: PublicName
-   Boolean: HasTranslation
-   Boolean: HasValue
-   Boolean: ShouldLocalize
-LocalizedText: Description
-   Boolean: HasTranslation
-   Boolean: HasValue
-   Boolean: ShouldLocalize
+String: PublicName
+String: Description
 (enum) eWeaponFireMode: FireMode
 (RecoilDataBlock) UInt32: RecoilDataID
 (enum) AgentModifier: DamageBoosterEffect

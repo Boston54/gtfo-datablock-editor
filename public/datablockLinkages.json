@@ -9,12 +9,21 @@
     "TierA.Expedition.ExpeditionBalance": "ExpeditionBalanceDataBlock",
     "TierA.Expedition.ScoutWaveSettings": "SurvivalWaveSettingsDataBlock",
     "TierA.Expedition.ScoutWavePopulation": "SurvivalWavePopulationDataBlock",
+    "TierA.VanityItemsDropData.Groups": "VanityItemsGroupDataBlock",
+    "TierA.GearPicker.StandardGear": "GearCategoryDataBlock",
+    "TierA.GearPicker.SpecialGear": "GearCategoryDataBlock",
+    "TierA.GearPicker.ToolGear": "GearCategoryDataBlock",
+    "TierA.GearPicker.MeleeGear": "GearCategoryDataBlock",
     "TierA.MainLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierA.MainLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierA.MainLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierA.SecondaryLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierA.SecondaryLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierA.SecondaryLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierA.ThirdLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierA.ThirdLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierA.ThirdLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
+    "TierA.DimensionDatas.DimensionData": "DimensionDataBlock",
     "TierB.LevelLayoutData": "LevelLayoutDataBlock",
     "TierB.SecondaryLayout": "LevelLayoutDataBlock",
     "TierB.ThirdLayout": "LevelLayoutDataBlock",
@@ -23,12 +32,21 @@
     "TierB.Expedition.ExpeditionBalance": "ExpeditionBalanceDataBlock",
     "TierB.Expedition.ScoutWaveSettings": "SurvivalWaveSettingsDataBlock",
     "TierB.Expedition.ScoutWavePopulation": "SurvivalWavePopulationDataBlock",
+    "TierB.VanityItemsDropData.Groups": "VanityItemsGroupDataBlock",
+    "TierB.GearPicker.StandardGear": "GearCategoryDataBlock",
+    "TierB.GearPicker.SpecialGear": "GearCategoryDataBlock",
+    "TierB.GearPicker.ToolGear": "GearCategoryDataBlock",
+    "TierB.GearPicker.MeleeGear": "GearCategoryDataBlock",
     "TierB.MainLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierB.MainLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierB.MainLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierB.SecondaryLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierB.SecondaryLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierB.SecondaryLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierB.ThirdLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierB.ThirdLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierB.ThirdLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
+    "TierB.DimensionDatas.DimensionData": "DimensionDataBlock",
     "TierC.LevelLayoutData": "LevelLayoutDataBlock",
     "TierC.SecondaryLayout": "LevelLayoutDataBlock",
     "TierC.ThirdLayout": "LevelLayoutDataBlock",
@@ -37,12 +55,21 @@
     "TierC.Expedition.ExpeditionBalance": "ExpeditionBalanceDataBlock",
     "TierC.Expedition.ScoutWaveSettings": "SurvivalWaveSettingsDataBlock",
     "TierC.Expedition.ScoutWavePopulation": "SurvivalWavePopulationDataBlock",
+    "TierC.VanityItemsDropData.Groups": "VanityItemsGroupDataBlock",
+    "TierC.GearPicker.StandardGear": "GearCategoryDataBlock",
+    "TierC.GearPicker.SpecialGear": "GearCategoryDataBlock",
+    "TierC.GearPicker.ToolGear": "GearCategoryDataBlock",
+    "TierC.GearPicker.MeleeGear": "GearCategoryDataBlock",
     "TierC.MainLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierC.MainLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierC.MainLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierC.SecondaryLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierC.SecondaryLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierC.SecondaryLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierC.ThirdLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierC.ThirdLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierC.ThirdLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
+    "TierC.DimensionDatas.DimensionData": "DimensionDataBlock",
     "TierD.LevelLayoutData": "LevelLayoutDataBlock",
     "TierD.SecondaryLayout": "LevelLayoutDataBlock",
     "TierD.ThirdLayout": "LevelLayoutDataBlock",
@@ -51,12 +78,21 @@
     "TierD.Expedition.ExpeditionBalance": "ExpeditionBalanceDataBlock",
     "TierD.Expedition.ScoutWaveSettings": "SurvivalWaveSettingsDataBlock",
     "TierD.Expedition.ScoutWavePopulation": "SurvivalWavePopulationDataBlock",
+    "TierD.VanityItemsDropData.Groups": "VanityItemsGroupDataBlock",
+    "TierD.GearPicker.StandardGear": "GearCategoryDataBlock",
+    "TierD.GearPicker.SpecialGear": "GearCategoryDataBlock",
+    "TierD.GearPicker.ToolGear": "GearCategoryDataBlock",
+    "TierD.GearPicker.MeleeGear": "GearCategoryDataBlock",
     "TierD.MainLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierD.MainLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierD.MainLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierD.SecondaryLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierD.SecondaryLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierD.SecondaryLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierD.ThirdLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierD.ThirdLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierD.ThirdLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
+    "TierD.DimensionDatas.DimensionData": "DimensionDataBlock",
     "TierE.LevelLayoutData": "LevelLayoutDataBlock",
     "TierE.SecondaryLayout": "LevelLayoutDataBlock",
     "TierE.ThirdLayout": "LevelLayoutDataBlock",
@@ -65,12 +101,21 @@
     "TierE.Expedition.ExpeditionBalance": "ExpeditionBalanceDataBlock",
     "TierE.Expedition.ScoutWaveSettings": "SurvivalWaveSettingsDataBlock",
     "TierE.Expedition.ScoutWavePopulation": "SurvivalWavePopulationDataBlock",
+    "TierE.VanityItemsDropData.Groups": "VanityItemsGroupDataBlock",
+    "TierE.GearPicker.StandardGear": "GearCategoryDataBlock",
+    "TierE.GearPicker.SpecialGear": "GearCategoryDataBlock",
+    "TierE.GearPicker.ToolGear": "GearCategoryDataBlock",
+    "TierE.GearPicker.MeleeGear": "GearCategoryDataBlock",
     "TierE.MainLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierE.MainLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierE.MainLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierE.SecondaryLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
     "TierE.SecondaryLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierE.SecondaryLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
     "TierE.ThirdLayerData.ObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
-    "TierE.ThirdLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock"
+    "TierE.ThirdLayerData.ChainedObjectiveData.DataBlockId": "WardenObjectiveDataBlock",
+    "TierE.ThirdLayerData.ArtifactLayerData.ArtifactLayerDistributionDataID": "ArtifactDistributionDataBlock",
+    "TierE.DimensionDatas.DimensionData": "DimensionDataBlock"
   },
   "LevelLayoutDataBlock": {
     "Zones.ChainedPuzzleToEnter": "ChainedPuzzleDataBlock",
@@ -83,6 +128,8 @@
   },
   "WardenObjectiveDataBlock": {
     "GenericItemFromStart": "ItemDataBlock",
+    "FogTransitionDataOnElevatorLand": "FogSettingsDataBlock",
+    "FogTransitionDataOnGotoWin": "FogSettingsDataBlock",
     "ChainedPuzzleToActive": "ChainedPuzzleDataBlock",
     "ChainedPuzzleMidObjective": "ChainedPuzzleDataBlock",
     "ChainedPuzzleAtExit": "ChainedPuzzleDataBlock",
@@ -90,6 +137,7 @@
     "Retrieve_Items": "ItemDataBlock",
     "WavesOnEvents.SurvivalWaveSettings": "SurvivalWaveSettingsDataBlock",
     "WavesOnEvents.SurvivalWavePopulation": "SurvivalWavePopulationDataBlock",
+    "CentralPowerGenCluster_FogDataSteps.m_fogDataId": "FogSettingsDataBlock",
     "ActivateHSU_ItemFromStart": "ItemDataBlock",
     "ActivateHSU_ItemAfterActivation": "ItemDataBlock"
   },
@@ -110,10 +158,6 @@
     "SurvivalWavePopulation": "SurvivalWavePopulationDataBlock",
     "ChainedPuzzle.PuzzleType": "ChainedPuzzleTypeDataBlock"
   },
-  "GearDataBlock": {
-    "baseItemID": "ItemDataBlock",
-    "archetypesAllowed.archetypeID": "ArchetypeDataBlock"
-  },
   "ArchetypeDataBlock": {
     "RecoilDataID": "RecoilDataBlock"
   },
@@ -133,6 +177,60 @@
   "BigPickupDistributionDataBlock": {
     "SpawnData.ItemID": "ItemDataBlock"
   },
+  "ArtifactDataBlock": {
+    "TagsID": "ArtifactTagDataBlock"
+  },
+  "GearCategoryDataBlock": {
+    "BaseItem": "ItemDataBlock",
+    "SemiArchetype": "ArchetypeDataBlock",
+    "BurstArchetype": "ArchetypeDataBlock",
+    "AutoArchetype": "ArchetypeDataBlock",
+    "SemiBurstArchetype": "ArchetypeDataBlock",
+    "MeleeArchetype": "MeleeArchetypeDataBlock"
+  },
+  "BoosterImplantTemplateDataBlock": {
+    "Conditions": "BoosterImplantConditionDataBlock",
+    "RandomConditions": "BoosterImplantConditionDataBlock"
+  },
+  "CommodityDataBlock": {
+    "Item": "ItemDataBlock"
+  },
+  "DimensionDataBlock": {
+    "DimensionData.LevelLayoutData": "LevelLayoutDataBlock",
+    "DimensionData.ResourceSetID": "ComplexResourceSetDataBlock",
+    "DimensionData.DimensionFogData": "FogSettingsDataBlock",
+    "DimensionData.StaticConsumableDistributionInZone": "ConsumableDistributionDataBlock",
+    "DimensionData.StaticBigPickupDistributionInZone": "BigPickupDistributionDataBlock",
+    "DimensionData.AtmosphereData": "AtmosphereDataBlock"
+  },
+  "GameSetupDataBlock": {
+    "RundownIdsToLoad": "RundownDataBlock"
+  },
+  "GearCategoryFilterDataBlock": {
+    "AllowedCategories.CategoryID": "GearCategoryDataBlock"
+  },
+  "ItemFPSSettingsDataBlock": {
+    "RecoilAnimation": "ItemMovementAnimationDataBlock",
+    "IdleAnimation": "ItemMovementAnimationDataBlock",
+    "WalkAnimation": "ItemMovementAnimationDataBlock",
+    "RunAnimation": "ItemMovementAnimationDataBlock",
+    "JumpAnimation": "ItemMovementAnimationDataBlock",
+    "LandAnimation": "ItemMovementAnimationDataBlock",
+    "ChargeCancelAnimation": "ItemMovementAnimationDataBlock"
+  },
+  "MeleeArchetypeDataBlock": {
+    "MeleeAnimationSet": "MeleeAnimationSetDataBlock",
+    "MeleeSFXSet": "MeleeSFXDataBlock"
+  },
+  "TextDataBlock": {
+    "CharacterMetaData": "TextCharacterMetaDataBlock"
+  },
+  "VanityItemsGroupDataBlock": {
+    "Items": "VanityItemsTemplateDataBlock"
+  },
+  "VanityItemsLayerDropsDataBlock": {
+    "LayerDrops.Groups": "VanityItemsGroupDataBlock"
+  },
   "Assumptions": {
     "ChainPuzzle": "ChainedPuzzleDataBlock",
     "ChainedPuzzle": "ChainedPuzzleDataBlock",
@@ -142,6 +240,11 @@
     "LightSetting": "LightSettingsDataBlock",
     "LightSettings": "LightSettingsDataBlock",
     "ExcludeEnemyID": "EnemyDataBlock",
-    "IncludeEnemyID": "EnemyDataBlock"
+    "IncludeEnemyID": "EnemyDataBlock",
+    "WaveSettings": "SurvivalWaveSettingsDataBlock",
+    "WavePopulation": "SurvivalWavePopulationDataBlock",
+    "EnemyID": "EnemyDataBlock",
+    "GearCategoryFilter": "GearCategoryFilterDataBlock",
+    "MLSLevelKit": "MLSArrayDescriptorDataBlock"
   }
 }

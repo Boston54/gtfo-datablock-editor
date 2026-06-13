@@ -1,8 +1,10 @@
 import {addNewDatablock, deleteCurrentDatablock, initDatablocks, importDatablocks, downloadAllAsZip, resetToVanilla, downloadProjectAsZip, getDatablockState, setDatablockState, markDatablocksSaved} from './datablocks.js';
+import {initVanillaDatablocks} from './vanilla.js';
 import {initGeomorphs} from './geomorphs.js';
 import {initSounds} from './sounds.js';
 import {initConfigs, clearConfigs, downloadConfigsAsZip, getConfigState, setConfigState, markConfigsSaved, importConfigs} from './configs.js';
 import {saveToIndexedDB, loadFromIndexedDB, clearIndexedDB} from './persistence.js';
+import {initChangelog} from "./changelog.js";
 
 function tabsHelper(tabId, pageSelector, buttonSelector) {
     const targetPage = document.getElementById(tabId);
@@ -204,14 +206,38 @@ window.saveProject = async function() {
     }
 }
 
+window.revertProject = async function() {
+    if (confirm("Are you sure you want to revert your project to the last save? All unsaved changes will be lost.")) {
+        try {
+            const savedState = await loadFromIndexedDB();
+            if (savedState) {
+                console.log("Reverting to saved state...");
+                if (savedState.datablocks) setDatablockState(savedState.datablocks);
+                if (savedState.configs) setConfigState(savedState.configs);
+                if (savedState.activeTab) window.showTab(savedState.activeTab);
+                
+                markDatablocksSaved();
+                markConfigsSaved();
+            } else {
+                alert("No saved state found to revert to.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Failed to revert project: " + err.message);
+        }
+    }
+}
+
 // Main
 
 async function main() {
     await Promise.all([
         initDatablocks(),
+        initVanillaDatablocks(),
         initGeomorphs(),
         initSounds(),
-        initConfigs()
+        initConfigs(),
+        initChangelog()
     ]);
 
     // Restore state if available

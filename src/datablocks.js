@@ -1,7 +1,9 @@
 import {initTreeEditor, createDefaultElement, updateDetailPane, createVirtualJsonViewer} from './editor.js';
 import {loadEnums, loadSchema} from './schema.js';
 import {parseJSONC} from './jsonc.js';
+import { attachTooltip } from './tooltip.js';
 import {getConfigRoot, addFolderToZip} from './configs.js';
+import { showBlockSearch } from './search.js';
 
 const DATABLOCKS_FOLDER = "public/vanilla/datablocks/";
 
@@ -12,6 +14,7 @@ const parsedVanillaData = new Map();
 const editedDatablocks = new Set();
 const unsavedDatablocks = new Set();
 const savedSnapshots = new Map();
+const jsonErrors = new WeakMap(); // block object -> error message
 let allEnums = null;
 let linkages = {};
 let fieldDefinitions = {};
@@ -57,6 +60,17 @@ export function getDatablockData(name) {
 
 export function getLinkages() {
     return linkages;
+}
+
+export async function ensureDatablockLoaded(name) {
+    if (!name.endsWith(".json")) name += ".json";
+    if (currentData.has(name) || parsedVanillaData.has(name)) return;
+    await fetchVanillaData(name);
+}
+
+export function getPureVanillaData(name) {
+    if (!name.endsWith(".json")) name += ".json";
+    return parsedVanillaData.get(name);
 }
 
 export async function addNewDatablock(datablockName, useVanillaTemplate = false) {
@@ -238,6 +252,20 @@ function renderDatablockHeader(filename, blockIndex) {
         blockSelect.disabled = true;
     }
     leftGroup.appendChild(blockSelect);
+
+    if (hasBlocks) {
+        const searchBtn = document.createElement("button");
+        searchBtn.className = "editor-buttons";
+        searchBtn.innerHTML = "Search";
+        searchBtn.title = "Search blocks by name or persistentID";
+        searchBtn.onclick = () => {
+            showBlockSearch(data.Blocks, (index) => {
+                openBlock(filename, index);
+            });
+        };
+        leftGroup.appendChild(searchBtn);
+    }
+
     header.appendChild(leftGroup);
 
     const controls = document.createElement("div");
@@ -317,8 +345,18 @@ async function openBlock(filename, index) {
             targetBlocks.add(target);
         }
     }
+
+    // Special handling for PlayerOfflineGearDataBlock virtual linkages
+    if (datablockType === "PlayerOfflineGearDataBlock") {
+        targetBlocks.add("GearCategoryDataBlock");
+        targetBlocks.add("ItemDataBlock");
+        targetBlocks.add("ItemFPSSettingsDataBlock");
+        targetBlocks.add("WeaponAudioDataBlock");
+        targetBlocks.add("WeaponMuzzleFlashDataBlock");
+        targetBlocks.add("WeaponShellCasingDataBlock");
+    }
     
-    await Promise.all(Array.from(targetBlocks).map(name => fetchVanillaData(name + ".json")));
+    await Promise.all(Array.from(targetBlocks).map(name => ensureDatablockLoaded(name)));
 
     const header = renderDatablockHeader(filename, index);
     
@@ -329,7 +367,7 @@ async function openBlock(filename, index) {
     viewModeSelect.style.color = "var(--text-primary)";
     viewModeSelect.style.border = "1px solid #666";
     
-    ['Tree View', 'JSON View (readonly)'].forEach((mode, i) => {
+    ['Tree View', 'JSON View'].forEach((mode, i) => {
         const opt = document.createElement("option");
         opt.value = i === 0 ? 'tree' : 'block';
         opt.textContent = mode;
@@ -365,10 +403,43 @@ async function openBlock(filename, index) {
     activeNode = { filename, index };
 
     if (viewMode === 'block') {
-        createVirtualJsonViewer(detailPane, block);
+        createVirtualJsonViewer(detailPane, block, {
+            onUpdate: (parsed, error) => {
+                if (error) {
+                    jsonErrors.set(block, error);
+                } else {
+                    jsonErrors.delete(block);
+                    // Update block content without replacing the object reference
+                    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+                        for (const key in block) delete block[key];
+                        Object.assign(block, parsed);
+                        updateEditedStatus(filename);
+                    } else {
+                        jsonErrors.set(block, "JSON must be an object { ... }");
+                    }
+                }
+            }
+        });
     } else {
-        const blockSchema = schema?.Blocks?.children || null;
-        initTreeEditor(detailPane, block, blockSchema, allEnums, filename, linkages, getDatablockData, fieldDefinitions, defaults, onUpdate);
+        const error = jsonErrors.get(block);
+        if (error) {
+            const errorEl = document.createElement("div");
+            errorEl.className = "json-error-message";
+            errorEl.textContent = `Invalid JSON detected in JSON view. Please fix it before using the tree view.\n\nError: ${error}`;
+            detailPane.appendChild(errorEl);
+        } else {
+            const blockSchema = schema?.Blocks?.children || null;
+            initTreeEditor(detailPane, block, blockSchema, {
+                enums: allEnums,
+                datablockName: filename,
+                linkages: linkages,
+                getDatablockData: getDatablockData,
+                ensureDatablockLoaded: ensureDatablockLoaded,
+                definitions: fieldDefinitions,
+                defaults: defaults,
+                onUpdate: onUpdate
+            });
+        }
     }
 }
 
@@ -424,7 +495,7 @@ function createButton(text, className, title) {
     const btn = document.createElement("button");
     btn.textContent = text;
     btn.className = className;
-    btn.title = title;
+    if (title) attachTooltip(btn, title);
     return btn;
 }
 

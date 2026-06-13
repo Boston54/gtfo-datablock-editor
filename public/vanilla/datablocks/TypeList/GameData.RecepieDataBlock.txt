@@ -1,8 +1,0 @@
-Int32: siffran
-Vector3: vektorn
-Boolean: santellerfalskt
-Vector2: andraVektorn
-List<String>: objects
-String: name
-Boolean: internalEnabled
-UInt32: persistentID

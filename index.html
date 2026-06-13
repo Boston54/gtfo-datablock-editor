@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>GTFO Rundown Editor</title>
+    <title>GTFO Datablock Editor</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
     <div id="header">
-        <h1 class="title">GTFO Rundown Editor</h1>
+        <h1 class="title">GTFO Datablock Editor v0.3</h1>
         <h2 class="subtitle">by Boston54</h2>
     </div>
     <div id="top-bar">
@@ -16,13 +16,16 @@
         <button onclick="openProject()" class="top-button">Open Project</button>
         <button onclick="saveProject()" class="top-button success">Save Project</button>
         <button onclick="downloadProject()" class="top-button success">Download Project</button>
+        <button onclick="revertProject()" class="top-button danger">Revert to Last Save</button>
     </div>
     <div id="main-tabs">
         <button onclick="showTab('home')" class="active">Home</button>
         <button onclick="showTab('datablock-editor')">Datablock Editor</button>
         <button onclick="showTab('config-editor')">Config Editor</button>
+        <button onclick="showTab('vanilla-datablocks')">Vanilla Datablocks</button>
         <button onclick="showTab('geomorphs')">Geomorphs</button>
         <button onclick="showTab('sounds')">Sounds</button>
+        <button onclick="showTab('changelog')">Changelog</button>
     </div>
     <div id="content">
         <input type="file" id="project-upload" webkitdirectory style="display:none">
@@ -65,7 +68,8 @@
             </p>
             <p>
                 To use object keys that are not present in the vanilla datablocks, you can add your own entries to objects by
-                clicking the <code>Add Object</code>, <code>Add Value</code>, <code>Add List</code> or <code>Add Raw List</code> buttons at the bottom of the object.
+                clicking the <code>Add Object</code>, <code>Add Value</code>, or <code>Add List</code> buttons at the bottom of the object, or
+                you can edit the JSON directly to include these fields by swapping to the JSON view in the top right.
             </p>
             <p>
                 To use object values that are not present in the vanilla datablocks, you can select the <code>Custom...</code> option from the
@@ -126,6 +130,22 @@
             <input type="file" id="config-upload" multiple accept=".json" style="display:none">
         </div>
 
+
+        <!-- Vanilla Datablocks Tab -->
+        <div id="vanilla-datablocks" class="tab-page">
+            <div class="side-editor-content">
+                <div class="side-sidebar">
+                    <div class="side-sidebar-header">
+                        <div class="side-sidebar-header-row">
+                            <h3 style="margin: 0; padding: 5px 0; border: none;">Vanilla Blocks</h3>
+                        </div>
+                    </div>
+                    <div class="side-tree-container" id="vanilla-tree-container"></div>
+                </div>
+                <div class="side-main-area" id="vanilla-main-area"></div>
+            </div>
+        </div>
+
         <!-- Geomorphs Tab -->
         <div id="geomorphs" class="tab-page">
             <h2>Geomorphs</h2>
@@ -147,6 +167,12 @@
                 This resource can be used as a reference for assigning <code>SoundID</code> in various datablocks.
             </p>
             <div id="sounds-table-container"></div>
+        </div>
+
+        <!-- Changelog Tab -->
+        <div id="changelog" class="tab-page">
+            <h2>Changelog</h2>
+            <div id="changelog-content"></div>
         </div>
     </div>
 </body>
