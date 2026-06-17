@@ -3,5 +3,15 @@
     "ZoneAliasStart": 0,
     "name": "My Level Layout",
     "Zones.AliasOverride": -1
+  },
+  "ChainedPuzzleDataBlock": {
+    "name": "My Chained Puzzle",
+    "TriggerAlarmOnActivate": true,
+    "DisableSurvivalWaveOnComplete": true,
+    "UseRandomPositions": true,
+    "SurvivalWaveAreaDistance": 2,
+    "WantedDistanceBetweenPuzzleComponents": 5,
+    "AlarmSoundStart": 3339129407,
+    "AlarmSoundStop": 42633153
   }
 }

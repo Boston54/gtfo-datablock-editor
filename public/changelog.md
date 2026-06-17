@@ -1,3 +1,8 @@
+# v0.3.2
+- Re-added Enums.json (oops)
+- Changed some entries in definitions.json
+- Added defaults for ChainedPuzzleDataBlock
+
 # v0.3.1
 - Added some missing field definitions.
 - Added some missing datablock linkages.

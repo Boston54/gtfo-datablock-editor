@@ -101,6 +101,7 @@
     "TriggerAlarmOnActivate": "Whether to trigger an alarm when the puzzle starts. False for stealth scans, normally true otherwise.",
     "SurvivalWaveSettings": "Determines the wave spawns, as defined by the SurvivalWaveSettingsDataBlock.",
     "SurvivalWavePopulation": "Determines the enemies that will spawn in the waves, as defined by the SurvivalWavePopulationDataBlock.",
+    "SurvivalWaveAreaDistance": "How many rooms away from the player the wave spawns. 0 means the wave spawns in the player's room.",
     "DisableSurvivalWaveOnComplete": "Whether to stop the wave spawns after the puzzle is completed. Typically false for ://ERROR! alarms.",
     "UseRandomPositions": "Whether to use random positions for the scan, typically set to true. By setting this to false, the scan positions will be somewhat static (not guaranteed static).",
     "WantedDistanceFromStartPos": "The desired distance for the first scan to be. 0 means the first scan will not move away.",
@@ -108,7 +109,7 @@
     "ChainedPuzzle": "Determines the count and types of scans.",
     "OnlyShowHudWhenPlayerIsClose": "If true, the HUD will only show up if you are close to the scan. Typically false for extraction scans.",
     "AlarmSoundStart": "The sound to play when the alarm starts. This is a SoundID, see the 'Sounds' tab for a list of available sounds.",
-    "AlarmSoundStop": "The sound to play when the alarm starts. This is a SoundID, see the 'Sounds' tab for a list of available sounds."
+    "AlarmSoundStop": "The sound to play when the alarm stops. This is a SoundID, see the 'Sounds' tab for a list of available sounds."
   },
   "ChainedPuzzleTypeDataBlock":  {
     "Prefab": "The prefab used for this scan type. Defines what the scan will look like."
