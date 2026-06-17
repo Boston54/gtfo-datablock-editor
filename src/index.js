@@ -88,7 +88,7 @@ async function finalizeProjectLoad(datablockFiles, configFiles) {
         await importConfigs(configFiles);
     }
     
-    markDatablocksSaved();
+    await markDatablocksSaved();
     markConfigsSaved();
 }
 
@@ -193,12 +193,12 @@ window.downloadProject = function() {
 window.saveProject = async function() {
     const state = {
         activeTab: document.querySelector('.tab-page.active')?.id || 'home',
-        datablocks: getDatablockState(),
+        datablocks: await getDatablockState(),
         configs: getConfigState()
     };
     try {
         await saveToIndexedDB(state);
-        markDatablocksSaved();
+        await markDatablocksSaved();
         markConfigsSaved();
     } catch (err) {
         console.error(err);
@@ -216,7 +216,7 @@ window.revertProject = async function() {
                 if (savedState.configs) setConfigState(savedState.configs);
                 if (savedState.activeTab) window.showTab(savedState.activeTab);
                 
-                markDatablocksSaved();
+                await markDatablocksSaved();
                 markConfigsSaved();
             } else {
                 alert("No saved state found to revert to.");

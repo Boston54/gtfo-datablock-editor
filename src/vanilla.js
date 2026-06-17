@@ -7,6 +7,7 @@ import { showBlockSearch } from './search.js';
 const DATABLOCKS_FOLDER = "public/vanilla/datablocks/";
 
 let activeNode = null; // { filename: '...', index: 0 }
+const lastViewedBlock = new Map(); // filename -> index
 const validDatablockNames = new Set();
 let viewMode = 'tree'; // 'tree', 'block'
 let allEnums = null;
@@ -69,7 +70,9 @@ async function openVanillaDatablock(filename) {
     const data = getPureVanillaData(filename);
 
     if (data.Blocks && data.Blocks.length > 0) {
-        openVanillaBlock(filename, 0);
+        const lastIndex = lastViewedBlock.get(filename) || 0;
+        const validIndex = (lastIndex < data.Blocks.length) ? lastIndex : 0;
+        openVanillaBlock(filename, validIndex);
         return;
     }
 
@@ -200,6 +203,7 @@ async function openVanillaBlock(filename, index) {
     mainArea.appendChild(detailPane);
 
     activeNode = { filename, index };
+    lastViewedBlock.set(filename, index);
 
     if (viewMode === 'block') {
         createVirtualJsonViewer(detailPane, block);

@@ -1,7 +1,11 @@
 
 import {parseJSONC} from './jsonc.js';
 
+const schemaCache = new Map();
+
 export async function loadSchema(datablockName) {
+    if (schemaCache.has(datablockName)) return schemaCache.get(datablockName);
+
     const name = datablockName.replace(".json", "");
     try {
         const response = await fetch(`public/vanilla/datablocks/TypeList/GameData.${name}.txt`);
@@ -9,7 +13,7 @@ export async function loadSchema(datablockName) {
         const text = await response.text();
         const blockFields = parseSchema(text);
         
-        return {
+        const schema = {
             Blocks: {
                 name: "Blocks",
                 type: `List<${name}>`,
@@ -28,6 +32,8 @@ export async function loadSchema(datablockName) {
                 type: "UInt32"
             }
         };
+        schemaCache.set(datablockName, schema);
+        return schema;
     } catch (e) {
         console.error(`Failed to load schema for ${datablockName}`, e);
         return null;

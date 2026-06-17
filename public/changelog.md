@@ -1,3 +1,10 @@
+# v0.3.1
+- Added some missing field definitions.
+- Added some missing datablock linkages.
+- Fixed a bug where trying to input a TextDataBlock ID into name fields would save it as a string literal instead of properly linking.
+- Fixed a bug where switching datablock and switching back would change the block that was being viewed back to the first block in the list.
+- Added a sidebar when viewing the LevelLayoutDataBlock with temp text about planned features.
+
 # v0.3
 - Added definitions for almost all fields in almost all datablocks that can be viewed by hovering the field name.
 - Added the ability to edit the text in the JSON view, allowing copy-and-pasting blocks and configs.

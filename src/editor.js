@@ -67,22 +67,22 @@ const VIRTUAL_GEAR_JSON_SCHEMA = {
                     "AudioSetting": { type: "UInt32", linkage: "WeaponAudioDataBlock" },
                     "MuzzleFlash": { type: "UInt32", linkage: "WeaponMuzzleFlashDataBlock" },
                     "ShellCasing": { type: "UInt32", linkage: "WeaponShellCasingDataBlock" },
-                    "FrontPart": { type: "String" },
-                    "ReceiverPart": { type: "String" },
-                    "StockPart": { type: "String" },
-                    "SightPart": { type: "String" },
-                    "MagPart": { type: "String" },
-                    "FlashlightPart": { type: "String" },
-                    "ToolMainPart": { type: "String" },
-                    "ToolGripPart": { type: "String" },
-                    "ToolDeliveryPart": { type: "String" },
-                    "ToolPayloadPart": { type: "String" },
-                    "ToolTargetingPart": { type: "String" },
-                    "ToolScreenPart": { type: "String" },
-                    "MeleeHeadPart": { type: "String" },
-                    "MeleeNeckPart": { type: "String" },
-                    "MeleeHandlePart": { type: "String" },
-                    "MeleePommelPart": { type: "String" }
+                    "FrontPart": { type: "String", linkage: "GearFrontPartDataBlock"},
+                    "ReceiverPart": { type: "String", linkage: "GearReceiverPartDataBlock" },
+                    "StockPart": { type: "String", linkage: "GearStockPartDataBlock" },
+                    "SightPart": { type: "String", linkage: "GearSightPartDataBlock" },
+                    "MagPart": { type: "String", linkage: "GearMagPartDataBlock" },
+                    "FlashlightPart": { type: "String", linkage: "GearFlashlightPartDataBlock" },
+                    "ToolMainPart": { type: "String", linkage: "GearToolMainPartDataBlock" },
+                    "ToolGripPart": { type: "String", linkage: "GearToolGripPartDataBlock" },
+                    "ToolDeliveryPart": { type: "String", linkage: "GearToolDeliveryPartDataBlock" },
+                    "ToolPayloadPart": { type: "String", linkage: "GearToolPayloadPartDataBlock" },
+                    "ToolTargetingPart": { type: "String", linkage: "GearToolTargetingPartDataBlock" },
+                    "ToolScreenPart": { type: "String", linkage:"GearToolScreenPartDataBlock" },
+                    "MeleeHeadPart": { type: "String", linkage: "GearMeleeHeadPartDataBlock" },
+                    "MeleeNeckPart": { type: "String", linkage: "GearMeleeNeckPartDataBlock" },
+                    "MeleeHandlePart": { type: "String", linkage: "GearMeleeHandlePartDataBlock" },
+                    "MeleePommelPart": { type: "String", linkage: "GearMeleePommelPartDataBlock" },
                 }
             },
             "MatTrans": {
@@ -269,11 +269,12 @@ export function renderTree(container, data, path = "", state) {
         
         const isActuallyArray = Array.isArray(value);
         const isSchemaList = schemaNode && ((schemaNode.type && schemaNode.type.startsWith("List<")) || (schemaNode.baseType && schemaNode.baseType.startsWith("List<")));
+        const isLocalizedText = schemaNode && schemaNode.type === "LocalizedText";
 
         const isCustom = !isDataArray && !schemaChildren[key];
 
         let nodeEl;
-        if (isActuallyArray || isSchemaList || (typeof value === "object" && value !== null)) {
+        if (!isLocalizedText && (isActuallyArray || isSchemaList || (typeof value === "object" && value !== null))) {
             nodeEl = renderBranch(key, value, currentPath, cleanPath, schemaNode, isActuallyArray, isSchemaList, isDataArray, data, state, blockDefs, isCustom);
         } else {
             nodeEl = renderLeaf(key, value, currentPath, cleanPath, schemaNode, isDataArray, data, state, blockDefs, isCustom);
@@ -414,6 +415,7 @@ function getEnumName(schemaNode) {
 
 function getSchemaChildren(schemaNode) {
     if (!schemaNode) return {};
+    if (schemaNode.type === "LocalizedText") return {};
     let children = schemaNode.children ? schemaNode.children : {};
     if (schemaNode.type && COMMON_TYPES[schemaNode.type]) {
         return { ...children, ...COMMON_TYPES[schemaNode.type] };
@@ -654,6 +656,7 @@ function updateKeyName(data, oldKey, newKey, state, currentPath) {
     if (state.onUpdate) state.onUpdate(newKey, value, undefined);
 }
 
+
 function renderLinkageSelect(container, data, key, value, linkage, state) {
     if (typeof linkage === 'string') {
         linkage = { block: linkage, target: 'persistentID', display: 'name' };
@@ -669,9 +672,17 @@ function renderLinkageSelect(container, data, key, value, linkage, state) {
     
     // If target data is missing, try to ensure it's loaded
     if (!targetData && state.ensureDatablockLoaded) {
+        // Add a temporary loading state
+        const loadingSpan = document.createElement("span");
+        loadingSpan.textContent = " Loading datablock...";
+        loadingSpan.style.fontSize = "12px";
+        loadingSpan.style.color = "#888";
+        container.appendChild(loadingSpan);
+
         state.ensureDatablockLoaded(linkage.block).then(() => {
             updateDetailPane(state);
         });
+        return; // Return early as we will re-render when loaded
     }
 
     const searchInput = document.createElement("input");
@@ -703,17 +714,25 @@ function renderLinkageSelect(container, data, key, value, linkage, state) {
         let valueFound = (String(value) === "0" || value === undefined || value === null);
         
         const matchingBlocks = [];
-        if (targetData && targetData.Blocks) {
-            targetData.Blocks.forEach(block => {
+        const blocks = targetData ? (targetData.Blocks || targetData.blocks || (Array.isArray(targetData) ? targetData : null)) : null;
+
+        if (blocks) {
+            blocks.forEach(block => {
                 const targetVal = block[linkage.target];
-                const displayName = block[linkage.display] || "Unnamed";
+                let displayName = block[linkage.display];
+                if (!displayName && linkage.block === "TextDataBlock") {
+                    displayName = block.English;
+                }
+                if (!displayName) displayName = block.name || "Unnamed";
+
                 const isSelected = String(value) === String(targetVal) && String(value) !== "0";
                 
                 if (isSelected) valueFound = true;
 
                 const matches = filter !== "" && (
                     displayName.toLowerCase().includes(filterLower) || 
-                    String(targetVal).toLowerCase().includes(filterLower)
+                    String(targetVal).toLowerCase().includes(filterLower) ||
+                    (block.name && block.name.toLowerCase().includes(filterLower))
                 );
 
                 if (matches && firstMatch === null) firstMatch = targetVal;
@@ -725,13 +744,22 @@ function renderLinkageSelect(container, data, key, value, linkage, state) {
         }
 
         select.appendChild(noneOption);
-        matchingBlocks.forEach(block => {
+        
+        const MAX_OPTIONS = 500;
+        let count = 0;
+        for (const block of matchingBlocks) {
+            if (count >= MAX_OPTIONS && !block.isSelected) continue;
+
             const option = document.createElement("option");
             option.value = block.targetVal;
-            option.textContent = `${block.displayName} (${block.targetVal})`;
+            let display = block.displayName;
+            if (display.length > 100) display = display.substring(0, 97) + "...";
+            option.textContent = `${display} (${block.targetVal})`;
             if (block.isSelected) option.selected = true;
             select.appendChild(option);
-        });
+
+            if (!block.isSelected) count++;
+        }
 
         const customOption = document.createElement("option");
         customOption.value = "__custom__";
@@ -903,7 +931,7 @@ function renderBooleanSelect(container, data, key, value, state) {
 }
 
 function createDefaultInput(nodeEl, data, key, value, schemaNode, state) {
-    const isString = typeof value === "string" || (schemaNode && schemaNode.type === "String");
+    const isString = typeof value === "string" || (schemaNode && (schemaNode.type === "String" || schemaNode.type === "LocalizedText"));
     const input = document.createElement("input");
     
     let displayValue = (value !== undefined && value !== null) ? value : "";
@@ -921,7 +949,7 @@ function createDefaultInput(nodeEl, data, key, value, schemaNode, state) {
             
             if (isString) {
                 newValue = unescapeControlChars(newValue);
-            } else if (typeof value === "number" || (schemaNode && ["Int32", "UInt32", "Single", "Double", "Int16", "UInt16", "Byte"].includes(schemaNode.type))) {
+            } else if (!isString && (typeof value === "number" || (schemaNode && ["Int32", "UInt32", "Single", "Double", "Int16", "UInt16", "Byte"].includes(schemaNode.type)))) {
                 newValue = parseFloat(newValue);
             }
             
@@ -996,6 +1024,8 @@ export function createDefaultValue(schemaNode, state, path = "") {
     if (blockDefaults && blockDefaults[path] !== undefined) return blockDefaults[path];
 
     if (path.endsWith("internalEnabled")) return true;
+
+    if (type === "LocalizedText") return "";
 
     if (type === "Boolean") return false;
     if (["Int32", "UInt32", "Single", "Double", "Int16", "UInt16", "Byte"].includes(type)) return 0;

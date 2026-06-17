@@ -26,8 +26,14 @@ RundownTierProgressionData: ReqToReachTierE
    Int32: ThirdSectors
    Int32: AllClearedSectors
 RundownStorytellingData: StorytellingData
-   String: Title
-   String: TextLog
+   LocalizedText: Title
+      Boolean: HasTranslation
+      Boolean: HasValue
+      Boolean: ShouldLocalize
+   LocalizedText: TextLog
+      Boolean: HasTranslation
+      Boolean: HasValue
+      Boolean: ShouldLocalize
    Vector2: TextLogPos
    RundownStorytellingVisualData: Visuals
       Color: ColorBackground
@@ -52,8 +58,14 @@ RundownStorytellingData: StorytellingData
          Single: Scale
          Single: ScaleYModifier
    Vector2: SurfaceIconPosition
-   String: SurfaceDescription
-   String: ExternalExpTitle
+   LocalizedText: SurfaceDescription
+      Boolean: HasTranslation
+      Boolean: HasValue
+      Boolean: ShouldLocalize
+   LocalizedText: ExternalExpTitle
+      Boolean: HasTranslation
+      Boolean: HasValue
+      Boolean: ShouldLocalize
 (VanityItemsLayerDropsDataBlock) UInt32: VanityItemLayerDropDataBlock
 List<ExpeditionInTierData>: TierA
    Boolean: Enabled
@@ -83,9 +95,18 @@ List<ExpeditionInTierData>: TierA
       (enum) eRundownTier: CustomMatchmakingTier
       (enum) eProgressionVisualStyle: ProgressionVisualStyle
       Int32: ExpeditionDepth
-      String: EstimatedDuration
-      String: ExpeditionDescription
-      String: RoleplayedWardenIntel
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
       String: DevInfo
    BuildSeedData: Seeds
       Int32: BuildSeed
@@ -303,9 +324,18 @@ List<ExpeditionInTierData>: TierB
       (enum) eRundownTier: CustomMatchmakingTier
       (enum) eProgressionVisualStyle: ProgressionVisualStyle
       Int32: ExpeditionDepth
-      String: EstimatedDuration
-      String: ExpeditionDescription
-      String: RoleplayedWardenIntel
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
       String: DevInfo
    BuildSeedData: Seeds
       Int32: BuildSeed
@@ -523,9 +553,18 @@ List<ExpeditionInTierData>: TierC
       (enum) eRundownTier: CustomMatchmakingTier
       (enum) eProgressionVisualStyle: ProgressionVisualStyle
       Int32: ExpeditionDepth
-      String: EstimatedDuration
-      String: ExpeditionDescription
-      String: RoleplayedWardenIntel
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
       String: DevInfo
    BuildSeedData: Seeds
       Int32: BuildSeed
@@ -743,9 +782,18 @@ List<ExpeditionInTierData>: TierD
       (enum) eRundownTier: CustomMatchmakingTier
       (enum) eProgressionVisualStyle: ProgressionVisualStyle
       Int32: ExpeditionDepth
-      String: EstimatedDuration
-      String: ExpeditionDescription
-      String: RoleplayedWardenIntel
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
       String: DevInfo
    BuildSeedData: Seeds
       Int32: BuildSeed
@@ -963,9 +1011,18 @@ List<ExpeditionInTierData>: TierE
       (enum) eRundownTier: CustomMatchmakingTier
       (enum) eProgressionVisualStyle: ProgressionVisualStyle
       Int32: ExpeditionDepth
-      String: EstimatedDuration
-      String: ExpeditionDescription
-      String: RoleplayedWardenIntel
+      LocalizedText: EstimatedDuration
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: ExpeditionDescription
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
+      LocalizedText: RoleplayedWardenIntel
+         Boolean: HasTranslation
+         Boolean: HasValue
+         Boolean: ShouldLocalize
       String: DevInfo
    BuildSeedData: Seeds
       Int32: BuildSeed

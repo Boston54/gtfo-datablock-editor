@@ -104,7 +104,17 @@
                     </div>
                     <div class="side-tree-container" id="datablock-tree-container"></div>
                 </div>
-                <div class="side-main-area" id="datablock-main-area"></div>
+                <div class="side-content-container">
+                    <div id="datablock-header-area"></div>
+                    <div class="side-view-container">
+                        <div class="side-main-area" id="datablock-main-area"></div>
+                        <div class="resizer" id="datablock-side-resizer" hidden></div>
+                        <div class="side-panel" id="datablock-side-panel" hidden>
+                            <h3>LevelLayout View</h3>
+                            <p>A future version will have a minimap view of the selected level layout here.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <input type="file" id="datablock-upload" multiple accept=".json" style="display:none">
         </div>
@@ -137,7 +147,7 @@
                 <div class="side-sidebar">
                     <div class="side-sidebar-header">
                         <div class="side-sidebar-header-row">
-                            <h3 style="margin: 0; padding: 5px 0; border: none;">Vanilla Blocks</h3>
+                            <h3 style="margin: 0; padding: 5px 0; border: none;">Vanilla Datablocks</h3>
                         </div>
                     </div>
                     <div class="side-tree-container" id="vanilla-tree-container"></div>

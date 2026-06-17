@@ -1,6 +1,12 @@
 Boolean: Deprecated
-String: PublicName
-String: Description
+LocalizedText: PublicName
+   Boolean: HasTranslation
+   Boolean: HasValue
+   Boolean: ShouldLocalize
+LocalizedText: Description
+   Boolean: HasTranslation
+   Boolean: HasValue
+   Boolean: ShouldLocalize
 Vector2: DurationRange
 Single: DropWeight
 (BoosterImplantConditionDataBlock) List<UInt32>: Conditions

@@ -8,6 +8,7 @@ import { showBlockSearch } from './search.js';
 const DATABLOCKS_FOLDER = "public/vanilla/datablocks/";
 
 let activeNode = null; // { filename: '...', index: 0 }
+const lastViewedBlock = new Map(); // filename -> index
 const currentData = new Map();
 const vanillaData = new Map();
 const parsedVanillaData = new Map();
@@ -22,11 +23,23 @@ let defaults = {};
 const validDatablockNames = new Set();
 let viewMode = 'tree'; // 'tree', 'block'
 
-export function getDatablockState() {
+export async function getDatablockState() {
+    const processedData = [];
+    for (const [filename, data] of currentData.entries()) {
+        const schema = await loadSchema(filename);
+        if (schema) {
+            const cloned = JSON.parse(JSON.stringify(data));
+            applyLocalizedTextConversion(cloned, { children: schema });
+            processedData.push([filename, cloned]);
+        } else {
+            processedData.push([filename, data]);
+        }
+    }
     return {
-        currentData: Array.from(currentData.entries()),
+        currentData: processedData,
         activeNode,
-        viewMode
+        viewMode,
+        lastViewedBlock: Array.from(lastViewedBlock.entries())
     };
 }
 
@@ -45,6 +58,13 @@ export function setDatablockState(state) {
     activeNode = state.activeNode;
     viewMode = state.viewMode || 'tree';
     
+    if (state.lastViewedBlock) {
+        lastViewedBlock.clear();
+        state.lastViewedBlock.forEach(([filename, index]) => {
+            lastViewedBlock.set(filename, index);
+        });
+    }
+
     renderDatablockTree();
     if (activeNode) {
         if (activeNode.index !== undefined) openBlock(activeNode.filename, activeNode.index);
@@ -166,24 +186,90 @@ function deleteDatablockFile(filename) {
         activeNode = null;
         const mainArea = document.getElementById("datablock-main-area");
         if (mainArea) mainArea.innerHTML = "";
+        const headerArea = document.getElementById("datablock-header-area");
+        if (headerArea) headerArea.innerHTML = "";
+        updateSidePanelVisibility(null);
     }
     
     renderDatablockTree();
 }
 
+function updateSidePanelVisibility(filename) {
+    const sidePanel = document.getElementById("datablock-side-panel");
+    const resizer = document.getElementById("datablock-side-resizer");
+    if (!sidePanel) return;
+
+    if (!filename) {
+        sidePanel.hidden = true;
+        if (resizer) resizer.hidden = true;
+        return;
+    }
+
+    const datablockType = filename.replace(".json", "");
+    if (datablockType === "LevelLayoutDataBlock") {
+        sidePanel.hidden = false;
+        if (resizer) resizer.hidden = false;
+    } else {
+        sidePanel.hidden = true;
+        if (resizer) resizer.hidden = true;
+    }
+}
+
+function initSidePanelResizer() {
+    const resizer = document.getElementById("datablock-side-resizer");
+    const sidePanel = document.getElementById("datablock-side-panel");
+    const container = sidePanel?.parentElement;
+    
+    if (!resizer || !sidePanel || !container) return;
+
+    let isDragging = false;
+
+    resizer.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        resizer.classList.add('dragging');
+        document.body.style.cursor = 'col-resize';
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const containerRect = container.getBoundingClientRect();
+        const newWidth = containerRect.right - e.clientX;
+        
+        // Constraints
+        if (newWidth > 100 && newWidth < containerRect.width * 0.8) {
+            sidePanel.style.width = `${newWidth}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            resizer.classList.remove('dragging');
+            document.body.style.cursor = '';
+        }
+    });
+}
+
 async function openDatablock(filename) {
     const mainArea = document.getElementById("datablock-main-area");
-    if (!mainArea) return;
+    const headerArea = document.getElementById("datablock-header-area");
+    if (!mainArea || !headerArea) return;
     mainArea.innerHTML = "";
+    headerArea.innerHTML = "";
+    updateSidePanelVisibility(filename);
 
     const data = currentData.get(filename);
     if (data.Blocks && data.Blocks.length > 0) {
-        openBlock(filename, 0);
+        const lastIndex = lastViewedBlock.get(filename) || 0;
+        const validIndex = (lastIndex < data.Blocks.length) ? lastIndex : 0;
+        openBlock(filename, validIndex);
         return;
     }
 
     const header = renderDatablockHeader(filename, "full");
-    mainArea.appendChild(header);
+    headerArea.appendChild(header);
 
     const detailPane = document.createElement("div");
     detailPane.className = "editor-detail-pane";
@@ -293,9 +379,10 @@ function renderDatablockHeader(filename, blockIndex) {
     };
 
     const downloadBtn = createButton("Download JSON", "editor-buttons success", "Download this datablock as a JSON file");
-    downloadBtn.onclick = () => {
+    downloadBtn.onclick = async () => {
         const fileName = `GameData_${filename.replace(".json", "")}_bin.json`;
-        const blob = new Blob([JSON.stringify(data, null, 4)], { type: "application/json" });
+        const currentStr = await getProcessedDataString(filename);
+        const blob = new Blob([currentStr], { type: "application/json" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url; a.download = fileName; a.click();
@@ -327,8 +414,11 @@ function renderDatablockHeader(filename, blockIndex) {
 
 async function openBlock(filename, index) {
     const mainArea = document.getElementById("datablock-main-area");
-    if (!mainArea) return;
+    const headerArea = document.getElementById("datablock-header-area");
+    if (!mainArea || !headerArea) return;
     mainArea.innerHTML = "";
+    headerArea.innerHTML = "";
+    updateSidePanelVisibility(filename);
 
     const data = currentData.get(filename);
     const block = data.Blocks[index];
@@ -354,6 +444,21 @@ async function openBlock(filename, index) {
         targetBlocks.add("WeaponAudioDataBlock");
         targetBlocks.add("WeaponMuzzleFlashDataBlock");
         targetBlocks.add("WeaponShellCasingDataBlock");
+        targetBlocks.add("GearFrontPartDataBlock");
+        targetBlocks.add("GearReceiverPartDataBlock");
+        targetBlocks.add("GearStockPartDataBlock");
+        targetBlocks.add("GearSightPartDataBlock");
+        targetBlocks.add("GearMagPartDataBlock");
+        targetBlocks.add("GearFlashlightPartDataBlock");
+        targetBlocks.add("GearToolMainPartDataBlock");
+        targetBlocks.add("GearToolDeliveryPartDataBlock");
+        targetBlocks.add("GearToolPayloadPartDataBlock");
+        targetBlocks.add("GearToolTargetingPartDataBlock");
+        targetBlocks.add("GearToolScreenPartDataBlock");
+        targetBlocks.add("GearMeleeHeadPartDataBlock");
+        targetBlocks.add("GearMeleeNeckPartDataBlock");
+        targetBlocks.add("GearMeleeHandlePartDataBlock");
+        targetBlocks.add("GearMeleePommelPartDataBlock");
     }
     
     await Promise.all(Array.from(targetBlocks).map(name => ensureDatablockLoaded(name)));
@@ -381,7 +486,7 @@ async function openBlock(filename, index) {
     };
     controls.prepend(viewModeSelect);
 
-    mainArea.appendChild(header);
+    headerArea.appendChild(header);
 
     const detailPane = document.createElement("div");
     detailPane.className = "editor-detail-pane";
@@ -401,6 +506,7 @@ async function openBlock(filename, index) {
     };
 
     activeNode = { filename, index };
+    lastViewedBlock.set(filename, index);
 
     if (viewMode === 'block') {
         createVirtualJsonViewer(detailPane, block, {
@@ -454,6 +560,9 @@ export function closeAllDatablocks() {
     activeNode = null;
     const mainArea = document.getElementById("datablock-main-area");
     if (mainArea) mainArea.innerHTML = "";
+    const headerArea = document.getElementById("datablock-header-area");
+    if (headerArea) headerArea.innerHTML = "";
+    updateSidePanelVisibility(null);
     renderDatablockTree();
 }
 
@@ -462,6 +571,7 @@ export function resetToVanilla() {
     editedDatablocks.clear();
     unsavedDatablocks.clear();
     savedSnapshots.clear();
+    lastViewedBlock.clear();
     closeAllDatablocks();
 }
 
@@ -542,6 +652,7 @@ export async function initDatablocks() {
         select.appendChild(option);
     }
     
+    initSidePanelResizer();
     renderDatablockTree();
 }
 
@@ -553,9 +664,19 @@ async function fetchVanillaData(filename) {
         const response = await fetch(DATABLOCKS_FOLDER + filename);
         const text = await response.text();
         const datablock = parseJSONC(text);
-        const stringified = JSON.stringify(datablock, null, 4);
-        vanillaData.set(filename, stringified);
+        
         parsedVanillaData.set(filename, datablock);
+        
+        // Optimization: Don't stringify huge datablocks that are mostly for reference
+        // TextDataBlock is 16MB and stringifying it to 60MB is a waste of memory and CPU.
+        let stringified;
+        if (text.length > 5000000) { // 5MB limit for stringification
+            stringified = text; // Just use the raw text if we really need a string
+        } else {
+            stringified = JSON.stringify(datablock, null, 4);
+        }
+        
+        vanillaData.set(filename, stringified);
         return stringified;
     } catch (e) {
         console.error(`Failed to load vanilla data for ${filename}`, e);
@@ -566,19 +687,32 @@ async function fetchVanillaData(filename) {
 const pendingEditedUpdates = new Set();
 let editedUpdateTimeout = null;
 
+async function getProcessedDataString(filename) {
+    const data = currentData.get(filename);
+    if (!data) return "";
+    
+    const schema = await loadSchema(filename);
+    let processedData = data;
+    if (schema) {
+        processedData = JSON.parse(JSON.stringify(data));
+        applyLocalizedTextConversion(processedData, { children: schema });
+    }
+    return JSON.stringify(processedData, null, 4);
+}
+
 export function updateEditedStatus(filename) {
     pendingEditedUpdates.add(filename);
     clearTimeout(editedUpdateTimeout);
-    editedUpdateTimeout = setTimeout(() => {
+    editedUpdateTimeout = setTimeout(async () => {
         for (const file of pendingEditedUpdates) {
-            _updateEditedStatus(file);
+            await _updateEditedStatus(file);
         }
         pendingEditedUpdates.clear();
         renderDatablockTree();
     }, 500);
 }
 
-function _updateEditedStatus(filename) {
+async function _updateEditedStatus(filename) {
     const current = currentData.get(filename);
     const vanilla = vanillaData.get(filename);
     const saved = savedSnapshots.get(filename);
@@ -590,13 +724,12 @@ function _updateEditedStatus(filename) {
     }
 
     if (vanilla === undefined && validDatablockNames.has(filename)) {
-        fetchVanillaData(filename).then(() => {
-            updateEditedStatus(filename);
-        });
+        await fetchVanillaData(filename);
+        updateEditedStatus(filename);
         return;
     }
 
-    const currentStr = JSON.stringify(current, null, 4);
+    const currentStr = await getProcessedDataString(filename);
 
     if (vanilla === undefined) {
         // If it's not a vanilla block, it's considered edited (new)
@@ -620,10 +753,10 @@ function _updateEditedStatus(filename) {
     }
 }
 
-export function markDatablocksSaved() {
+export async function markDatablocksSaved() {
     unsavedDatablocks.clear();
     for (const [filename, data] of currentData.entries()) {
-        savedSnapshots.set(filename, JSON.stringify(data, null, 4));
+        savedSnapshots.set(filename, await getProcessedDataString(filename));
     }
     renderDatablockTree();
 }
@@ -777,7 +910,15 @@ export async function downloadAllAsZip() {
     for (const [filename, data] of editedFiles) {
         const nameWithoutExt = filename.replace(".json", "");
         const zipFileName = `GameData_${nameWithoutExt}_bin.json`;
-        zip.file(zipFileName, JSON.stringify(data, null, 4));
+
+        const schema = await loadSchema(filename);
+        let processedData = data;
+        if (schema) {
+            processedData = JSON.parse(JSON.stringify(data));
+            applyLocalizedTextConversion(processedData, { children: schema });
+        }
+
+        zip.file(zipFileName, JSON.stringify(processedData, null, 4));
     }
 
     if (hasConfigs) {
@@ -801,7 +942,15 @@ export async function downloadProjectAsZip() {
     for (const [filename, data] of currentData.entries()) {
         const nameWithoutExt = filename.replace(".json", "");
         const zipFileName = `GameData_${nameWithoutExt}_bin.json`;
-        zip.file(zipFileName, JSON.stringify(data, null, 4));
+
+        const schema = await loadSchema(filename);
+        let processedData = data;
+        if (schema) {
+            processedData = JSON.parse(JSON.stringify(data));
+            applyLocalizedTextConversion(processedData, { children: schema });
+        }
+
+        zip.file(zipFileName, JSON.stringify(processedData, null, 4));
     }
 
     // Include configs
@@ -822,4 +971,55 @@ export async function downloadProjectAsZip() {
     a.download = "project.zip";
     a.click();
     URL.revokeObjectURL(url);
+}
+
+function applyLocalizedTextConversion(data, schemaNode) {
+    if (!data || !schemaNode) return;
+
+    const children = schemaNode.children;
+    if (!children) return;
+
+    if (Array.isArray(data)) {
+        const typeStr = (schemaNode.baseType && schemaNode.baseType.startsWith("List<")) ? schemaNode.baseType : schemaNode.type;
+        if (typeStr && typeStr.startsWith("List<")) {
+            const innerType = typeStr.substring(5, typeStr.length - 1);
+            if (innerType === "LocalizedText") {
+                for (let i = 0; i < data.length; i++) {
+                    if (typeof data[i] === "string") {
+                        const trimmed = data[i].trim();
+                        if (trimmed !== "") {
+                            const num = parseInt(trimmed);
+                            if (!isNaN(num) && String(num) === trimmed) {
+                                data[i] = num;
+                            }
+                        }
+                    }
+                }
+            } else {
+                data.forEach(item => {
+                    applyLocalizedTextConversion(item, { children: children, type: innerType });
+                });
+            }
+        }
+    } else if (typeof data === 'object') {
+        for (const key in data) {
+            const childSchema = children[key];
+            if (childSchema) {
+                if (childSchema.type === "LocalizedText") {
+                    const value = data[key];
+                    if (typeof value === "string") {
+                        const trimmed = value.trim();
+                        if (trimmed !== "") {
+                            const num = parseInt(trimmed);
+                            if (!isNaN(num) && String(num) === trimmed) {
+                                data[key] = num;
+                            }
+                        }
+                    }
+                } else if (childSchema.children) {
+                    applyLocalizedTextConversion(data[key], childSchema);
+                }
+            }
+        }
+    }
 }
